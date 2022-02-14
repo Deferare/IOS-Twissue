@@ -7,19 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D4E30D327B9E933001F8E41 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4E30D227B9E933001F8E41 /* Swifter */; };
+		5D4E30D527B9EB90001F8E41 /* TwitterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */; };
+		5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */; };
+		5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */; };
+		5D4E30DC27BA1436001F8E41 /* NaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30DB27BA1436001F8E41 /* NaviViewController.swift */; };
+		5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */; };
 		5D64320527B8BE300022536B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64320427B8BE300022536B /* AppDelegate.swift */; };
 		5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64320627B8BE300022536B /* SceneDelegate.swift */; };
-		5D64320927B8BE300022536B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64320827B8BE300022536B /* ViewController.swift */; };
+		5D64320927B8BE300022536B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64320827B8BE300022536B /* FeedViewController.swift */; };
 		5D64320C27B8BE300022536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320A27B8BE300022536B /* Main.storyboard */; };
 		5D64320E27B8BE300022536B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320D27B8BE300022536B /* Assets.xcassets */; };
 		5D64321127B8BE300022536B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320F27B8BE300022536B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterConstants.swift; sourceTree = "<group>"; };
+		5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		5D4E30DB27BA1436001F8E41 /* NaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviViewController.swift; sourceTree = "<group>"; };
+		5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5D64320127B8BE300022536B /* Twissue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twissue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D64320427B8BE300022536B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D64320627B8BE300022536B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5D64320827B8BE300022536B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5D64320827B8BE300022536B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		5D64320B27B8BE300022536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5D64320D27B8BE300022536B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D64321027B8BE300022536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,12 +42,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4E30D327B9E933001F8E41 /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D4E30D627B9EF1E001F8E41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D4E30DB27BA1436001F8E41 /* NaviViewController.swift */,
+				5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */,
+				5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */,
+				5D64320827B8BE300022536B /* FeedViewController.swift */,
+				5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		5D6431F827B8BE300022536B = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +82,8 @@
 			children = (
 				5D64320427B8BE300022536B /* AppDelegate.swift */,
 				5D64320627B8BE300022536B /* SceneDelegate.swift */,
-				5D64320827B8BE300022536B /* ViewController.swift */,
+				5D4E30D627B9EF1E001F8E41 /* Views */,
+				5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */,
 				5D64320A27B8BE300022536B /* Main.storyboard */,
 				5D64320D27B8BE300022536B /* Assets.xcassets */,
 				5D64320F27B8BE300022536B /* LaunchScreen.storyboard */,
@@ -83,6 +108,9 @@
 			dependencies = (
 			);
 			name = Twissue;
+			packageProductDependencies = (
+				5D4E30D227B9E933001F8E41 /* Swifter */,
+			);
 			productName = Twissue;
 			productReference = 5D64320127B8BE300022536B /* Twissue.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +139,9 @@
 				Base,
 			);
 			mainGroup = 5D6431F827B8BE300022536B;
+			packageReferences = (
+				5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */,
+			);
 			productRefGroup = 5D64320227B8BE300022536B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,8 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D64320927B8BE300022536B /* ViewController.swift in Sources */,
+				5D64320927B8BE300022536B /* FeedViewController.swift in Sources */,
+				5D4E30D527B9EB90001F8E41 /* TwitterConstants.swift in Sources */,
+				5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */,
 				5D64320527B8BE300022536B /* AppDelegate.swift in Sources */,
+				5D4E30DC27BA1436001F8E41 /* NaviViewController.swift in Sources */,
+				5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */,
+				5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */,
 				5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattdonnelly/Swifter";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D4E30D227B9E933001F8E41 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */;
+			productName = Swifter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D6431F927B8BE300022536B /* Project object */;
 }
