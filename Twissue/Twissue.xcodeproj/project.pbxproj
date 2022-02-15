@@ -19,6 +19,9 @@
 		5D64320C27B8BE300022536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320A27B8BE300022536B /* Main.storyboard */; };
 		5D64320E27B8BE300022536B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320D27B8BE300022536B /* Assets.xcassets */; };
 		5D64321127B8BE300022536B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320F27B8BE300022536B /* LaunchScreen.storyboard */; };
+		5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */; };
+		5DCA3A7227BB4CF100A52A54 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */; };
+		5DCA3A7427BB62F500A52A54 /* TF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A7327BB62F500A52A54 /* TF.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		5D64320D27B8BE300022536B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D64321027B8BE300022536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D64321227B8BE300022536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		5DCA3A7327BB62F500A52A54 /* TF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TF.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 		5D4E30D627B9EF1E001F8E41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5DCA3A7027BB4CD300A52A54 /* Items */,
 				5D4E30DB27BA1436001F8E41 /* NaviViewController.swift */,
 				5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */,
 				5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */,
@@ -82,14 +89,32 @@
 			children = (
 				5D64320427B8BE300022536B /* AppDelegate.swift */,
 				5D64320627B8BE300022536B /* SceneDelegate.swift */,
-				5D4E30D627B9EF1E001F8E41 /* Views */,
 				5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */,
+				5DCA3A7327BB62F500A52A54 /* TF.swift */,
+				5D4E30D627B9EF1E001F8E41 /* Views */,
+				5DCA3A6D27BB4C6800A52A54 /* Models */,
 				5D64320A27B8BE300022536B /* Main.storyboard */,
 				5D64320D27B8BE300022536B /* Assets.xcassets */,
 				5D64320F27B8BE300022536B /* LaunchScreen.storyboard */,
 				5D64321227B8BE300022536B /* Info.plist */,
 			);
 			path = Twissue;
+			sourceTree = "<group>";
+		};
+		5DCA3A6D27BB4C6800A52A54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5DCA3A7027BB4CD300A52A54 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,11 +197,14 @@
 				5D64320927B8BE300022536B /* FeedViewController.swift in Sources */,
 				5D4E30D527B9EB90001F8E41 /* TwitterConstants.swift in Sources */,
 				5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */,
+				5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */,
 				5D64320527B8BE300022536B /* AppDelegate.swift in Sources */,
+				5DCA3A7427BB62F500A52A54 /* TF.swift in Sources */,
 				5D4E30DC27BA1436001F8E41 /* NaviViewController.swift in Sources */,
 				5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */,
 				5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */,
 				5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */,
+				5DCA3A7227BB4CF100A52A54 /* FeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
