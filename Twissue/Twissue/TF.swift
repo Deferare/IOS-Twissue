@@ -9,7 +9,8 @@ import Foundation
 import Swifter
 import UIKit
 
-class TF{
+
+class TF:UIViewController{
     
     let swifter = Swifter(consumerKey: TwitterConstants.CONSUMER_KEY, consumerSecret: TwitterConstants.CONSUMER_SECRET_KEY)
     var accToken: Credential.OAuthAccessToken?
@@ -58,18 +59,11 @@ class TF{
             }
         }
     
-//    swifter.getHomeTimeline(count: 20,success: { json in
-//        return json
-//    }, failure: { error in
-//        return error
-//    })
-
-//    swifter.getTimeline(for: .screenName("<twitterの@~~~のuser名の~~~の部分>"),success: { json in
-//        // 成功時の処理
-//        print(json)
+    
+//    func getFeed(){
 //
-//    }, failure: { error in
-//        // 失敗時の処理
-//        print(error)
-//    })
+//    }
+
+    
+
 }

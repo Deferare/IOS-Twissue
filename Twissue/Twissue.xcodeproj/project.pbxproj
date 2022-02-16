@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D4E30D327B9E933001F8E41 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5D4E30D227B9E933001F8E41 /* Swifter */; };
 		5D4E30D527B9EB90001F8E41 /* TwitterConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */; };
 		5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */; };
 		5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */; };
@@ -19,6 +18,10 @@
 		5D64320C27B8BE300022536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320A27B8BE300022536B /* Main.storyboard */; };
 		5D64320E27B8BE300022536B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320D27B8BE300022536B /* Assets.xcassets */; };
 		5D64321127B8BE300022536B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320F27B8BE300022536B /* LaunchScreen.storyboard */; };
+		5DB55C9A27BC981D003139EB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB55C9927BC981D003139EB /* Test.swift */; };
+		5DB55C9F27BCAC73003139EB /* TFCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB55C9E27BCAC73003139EB /* TFCaller.swift */; };
+		5DB55CA327BCAF5F003139EB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5DB55CA227BCAF5F003139EB /* Alamofire */; };
+		5DB55CA627BCAF6A003139EB /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 5DB55CA527BCAF6A003139EB /* Swifter */; };
 		5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */; };
 		5DCA3A7227BB4CF100A52A54 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */; };
 		5DCA3A7427BB62F500A52A54 /* TF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A7327BB62F500A52A54 /* TF.swift */; };
@@ -38,6 +41,8 @@
 		5D64320D27B8BE300022536B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D64321027B8BE300022536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D64321227B8BE300022536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DB55C9927BC981D003139EB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		5DB55C9E27BCAC73003139EB /* TFCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFCaller.swift; sourceTree = "<group>"; };
 		5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		5DCA3A7327BB62F500A52A54 /* TF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TF.swift; sourceTree = "<group>"; };
@@ -48,7 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D4E30D327B9E933001F8E41 /* Swifter in Frameworks */,
+				5DB55CA327BCAF5F003139EB /* Alamofire in Frameworks */,
+				5DB55CA627BCAF6A003139EB /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,12 +97,14 @@
 				5D64320627B8BE300022536B /* SceneDelegate.swift */,
 				5D4E30D427B9EB90001F8E41 /* TwitterConstants.swift */,
 				5DCA3A7327BB62F500A52A54 /* TF.swift */,
+				5DB55C9E27BCAC73003139EB /* TFCaller.swift */,
 				5D4E30D627B9EF1E001F8E41 /* Views */,
 				5DCA3A6D27BB4C6800A52A54 /* Models */,
 				5D64320A27B8BE300022536B /* Main.storyboard */,
 				5D64320D27B8BE300022536B /* Assets.xcassets */,
 				5D64320F27B8BE300022536B /* LaunchScreen.storyboard */,
 				5D64321227B8BE300022536B /* Info.plist */,
+				5DB55C9927BC981D003139EB /* Test.swift */,
 			);
 			path = Twissue;
 			sourceTree = "<group>";
@@ -134,7 +142,8 @@
 			);
 			name = Twissue;
 			packageProductDependencies = (
-				5D4E30D227B9E933001F8E41 /* Swifter */,
+				5DB55CA227BCAF5F003139EB /* Alamofire */,
+				5DB55CA527BCAF6A003139EB /* Swifter */,
 			);
 			productName = Twissue;
 			productReference = 5D64320127B8BE300022536B /* Twissue.app */;
@@ -165,7 +174,8 @@
 			);
 			mainGroup = 5D6431F827B8BE300022536B;
 			packageReferences = (
-				5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */,
+				5DB55CA127BCAF5F003139EB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				5DB55CA427BCAF6A003139EB /* XCRemoteSwiftPackageReference "Swifter" */,
 			);
 			productRefGroup = 5D64320227B8BE300022536B /* Products */;
 			projectDirPath = "";
@@ -198,7 +208,9 @@
 				5D4E30D527B9EB90001F8E41 /* TwitterConstants.swift in Sources */,
 				5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */,
 				5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */,
+				5DB55C9F27BCAC73003139EB /* TFCaller.swift in Sources */,
 				5D64320527B8BE300022536B /* AppDelegate.swift in Sources */,
+				5DB55C9A27BC981D003139EB /* Test.swift in Sources */,
 				5DCA3A7427BB62F500A52A54 /* TF.swift in Sources */,
 				5D4E30DC27BA1436001F8E41 /* NaviViewController.swift in Sources */,
 				5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */,
@@ -426,7 +438,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */ = {
+		5DB55CA127BCAF5F003139EB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5DB55CA427BCAF6A003139EB /* XCRemoteSwiftPackageReference "Swifter" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mattdonnelly/Swifter";
 			requirement = {
@@ -437,9 +457,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5D4E30D227B9E933001F8E41 /* Swifter */ = {
+		5DB55CA227BCAF5F003139EB /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D4E30D127B9E933001F8E41 /* XCRemoteSwiftPackageReference "Swifter" */;
+			package = 5DB55CA127BCAF5F003139EB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		5DB55CA527BCAF6A003139EB /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DB55CA427BCAF6A003139EB /* XCRemoteSwiftPackageReference "Swifter" */;
 			productName = Swifter;
 		};
 /* End XCSwiftPackageProductDependency section */
