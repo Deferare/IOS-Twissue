@@ -1,18 +1,18 @@
 //
-//  NaviViewController.swift
+//  ChartViewController.swift
 //  Twissue
 //
-//  Created by Deforeturn on 2/14/22.
+//  Created by Deforeturn on 2/23/22.
 //
 
 import UIKit
 
-class NaviViewController: UINavigationController {
+class ChartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        // Do any additional setup after loading the view.
     }
     
 
@@ -27,4 +27,3 @@ class NaviViewController: UINavigationController {
     */
 
 }
-

@@ -6,9 +6,10 @@
 //
 
 import UIKit
-//import SafariServices
+import Firebase
 
 class LoginViewController: UIViewController {
+    let provider = OAuthProvider(providerID: "twitter.com")
     
     @IBOutlet var loginBtn:UIButton!
     
@@ -19,6 +20,25 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginBtnAction(_ sender:UIButton){
-        TF().login(self)
+        provider.getCredentialWith(nil) { credential, err in
+            if err != nil {
+                print("Err")
+                print(err?.localizedDescription as Any)
+            }
+            if credential != nil {
+                Auth.auth().signIn(with: credential!) { authRes, err in
+                    if err != nil{
+                        print("Err2")
+                        print(err as Any)
+                    }
+                    
+                    print("Sussces")
+//                    print(authRes?.additionalUserInfo?.profile)
+//                    print(authRes?.autoContentAccessingProxy)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        
     }
 }

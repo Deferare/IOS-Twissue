@@ -107,15 +107,15 @@
                             <constraint firstItem="A0D-W5-yyN" firstAttribute="leading" secondItem="1aD-jn-hjL" secondAttribute="leading" id="qoe-BQ-QIr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" id="3fJ-lM-vrD">
-                        <imageReference key="image" image="house.fill" catalog="system" renderingMode="hierarchical-single">
+                    <tabBarItem key="tabBarItem" title="" id="Py0-WW-MBc">
+                        <imageReference key="image" image="house.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color systemColor="labelColor"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="house.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color systemColor="labelColor"/>
                                 <color systemColor="secondaryLabelColor"/>
@@ -123,14 +123,15 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="m6v-TN-vPk"/>
                     <connections>
-                        <outlet property="feedTable" destination="A0D-W5-yyN" id="N0E-pY-6J4"/>
-                        <segue destination="01m-yV-Dxb" kind="show" id="7a7-pR-gb0"/>
+                        <outlet property="feedTableView" destination="A0D-W5-yyN" id="B9s-7C-hGu"/>
+                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="FeedToLogin" id="07b-j7-eW5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKR-oM-SYk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2393.8461538461538" y="-78.199052132701425"/>
+            <point key="canvasLocation" x="-312" y="49"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="jOK-ig-gfl">
@@ -143,14 +144,14 @@
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" id="gcQ-su-5fe">
-                        <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color systemColor="labelColor"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="magnifyingglass" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="magnifyingglass" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color systemColor="labelColor"/>
                                 <color systemColor="secondaryLabelColor"/>
@@ -162,7 +163,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9w-S4-X6W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2394" y="580"/>
+            <point key="canvasLocation" x="514" y="48"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="mQz-Kb-XhD">
+            <objects>
+                <viewController id="wXp-Ow-dMf" customClass="ChartViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YBl-Eh-Wzc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="F22-UC-HLG"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="wUH-zo-IXo">
+                        <imageReference key="image" image="chart.bar.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <imageReference key="selectedImage" image="chart.bar.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9N-NC-33O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1315" y="48"/>
+        </scene>
+        <!--Config View Controller-->
+        <scene sceneID="H4m-um-tHU">
+            <objects>
+                <viewController id="4Uf-5t-LjA" customClass="ConfigViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W9t-VD-52n">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tjF-Me-vyP"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="G7X-Wh-Iuf">
+                        <imageReference key="image" image="person.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <imageReference key="selectedImage" image="person.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color systemColor="labelColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ygj-Eo-VhJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2083" y="48"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="7cj-NC-Asg">
@@ -172,9 +235,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOj-1i-M01">
-                                <rect key="frame" x="138" y="380" width="114" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOj-1i-M01">
+                                <rect key="frame" x="0.0" y="380" width="390" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                 <connections>
@@ -184,6 +246,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5hW-UV-qeq"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5hW-UV-qeq" firstAttribute="bottom" secondItem="FOj-1i-M01" secondAttribute="bottom" constant="345" id="DsH-sS-Da3"/>
+                            <constraint firstItem="FOj-1i-M01" firstAttribute="leading" secondItem="5hW-UV-qeq" secondAttribute="leading" id="bHP-VP-8VC"/>
+                            <constraint firstItem="5hW-UV-qeq" firstAttribute="trailing" secondItem="FOj-1i-M01" secondAttribute="trailing" id="gPN-4e-mbV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="izM-9S-sRQ"/>
                     <connections>
@@ -192,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frF-Ne-4EO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3436.9230769230767" y="-240.28436018957345"/>
+            <point key="canvasLocation" x="-1165" y="772"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="JaQ-5J-XFd">
@@ -206,35 +273,22 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="mkl-xT-gkq" kind="relationship" relationship="viewControllers" id="DaA-VR-FDo"/>
+                        <segue destination="mkl-xT-gkq" kind="relationship" relationship="viewControllers" id="QxN-GL-Br2"/>
                         <segue destination="BDM-Ij-a2G" kind="relationship" relationship="viewControllers" id="poa-Qs-954"/>
+                        <segue destination="wXp-Ow-dMf" kind="relationship" relationship="viewControllers" id="YSh-2h-a8i"/>
+                        <segue destination="4Uf-5t-LjA" kind="relationship" relationship="viewControllers" id="lQu-jY-qx2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-NI-S0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="173"/>
-        </scene>
-        <!--Navi View Controller-->
-        <scene sceneID="L4c-5m-4U2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="dark" navigationBarHidden="YES" id="1jb-8p-s0a" customClass="NaviViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gcH-x7-FK1">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bfr-2p-njk">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1SG-VK-WyN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-263" y="-498"/>
+            <point key="canvasLocation" x="920" y="-791"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

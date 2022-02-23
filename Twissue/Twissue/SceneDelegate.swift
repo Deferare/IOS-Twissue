@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Swifter
-//import safa
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,16 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-//        UIApplication.shared.windows.forEach { window in
-//            window.overrideUserInterfaceStyle = .dark
-//        }
+
     }
     
-    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let context = URLContexts.first else { return }
-        let callbackUrl = URL(string: TwitterConstants.CALLBACK_URL)!
-        Swifter.handleOpenURL(context.url, callbackURL: callbackUrl)
-    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
