@@ -203,8 +203,27 @@
                     <view key="view" contentMode="scaleToFill" id="W9t-VD-52n">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKr-dH-2tD">
+                                <rect key="frame" x="156" y="680" width="80" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Nni-am-nkO"/>
+                                    <constraint firstAttribute="height" constant="31" id="PcM-3l-47B"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutBtn:" destination="4Uf-5t-LjA" eventType="touchUpInside" id="UZ6-xy-PpY"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tjF-Me-vyP"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tjF-Me-vyP" firstAttribute="trailing" secondItem="AKr-dH-2tD" secondAttribute="trailing" constant="154" id="Yvz-Ia-n2t"/>
+                            <constraint firstItem="tjF-Me-vyP" firstAttribute="bottom" secondItem="AKr-dH-2tD" secondAttribute="bottom" constant="50" id="pCf-hC-frg"/>
+                            <constraint firstItem="AKr-dH-2tD" firstAttribute="leading" secondItem="tjF-Me-vyP" secondAttribute="leading" constant="156" id="qEf-4v-e8F"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="G7X-Wh-Iuf">
                         <imageReference key="image" image="person.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
@@ -222,6 +241,9 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <connections>
+                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="ConfigToLogin" id="0ux-xR-srn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygj-Eo-VhJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -259,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frF-Ne-4EO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1165" y="772"/>
+            <point key="canvasLocation" x="-903" y="803"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="JaQ-5J-XFd">
@@ -284,6 +306,9 @@
             <point key="canvasLocation" x="920" y="-791"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0ux-xR-srn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>

@@ -28,17 +28,18 @@ class LoginViewController: UIViewController {
             if credential != nil {
                 Auth.auth().signIn(with: credential!) { authRes, err in
                     if err != nil{
-                        print("Err2")
                         print(err as Any)
                     }
-                    
-                    print("Sussces")
-//                    print(authRes?.additionalUserInfo?.profile)
-//                    print(authRes?.autoContentAccessingProxy)
+            
+                    if let credential = authRes?.credential as? OAuthCredential{
+                        UserDefaults.standard.set(credential.accessToken!, forKey: "accessToken")
+                        UserDefaults.standard.set(credential.secret!, forKey: "accessSecretToken")
+                    } else {return}
                     self.dismiss(animated: true, completion: nil)
                 }
             }
+
+            
         }
-        
     }
 }

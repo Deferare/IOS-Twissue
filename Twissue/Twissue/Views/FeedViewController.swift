@@ -11,25 +11,23 @@ import Firebase
 class FeedViewController: UIViewController, AuthUIDelegate {
     
     
+    
     @IBOutlet weak var feedTableView:UITableView?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let user = Auth.auth().currentUser{
-            print("Test")
-            print(Auth.auth().currentUser?.displayName)
+        if  UserDefaults.standard.value(forKey: "accessToken") != nil && UserDefaults.standard.value(forKey: "accessSecretToken") != nil{
+            print("Current Success")
         } else{
             self.performSegue(withIdentifier: "FeedToLogin", sender: nil)
         }
-        
-        
-        
-        
     }
 }
 
