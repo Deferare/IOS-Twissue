@@ -7,8 +7,20 @@
 
 import Foundation
 
-struct Tweet {
-    let name: String
-    let username: String
-    let message: String
+
+
+
+struct Tweet:Codable {
+    var data:Data2
 }
+
+struct Data2:Codable{
+    var id:String
+    var text:String
+}
+//{
+//    "data": {
+//        "id": "20",
+//        "text": "just setting up my twttr"
+//    }
+//}

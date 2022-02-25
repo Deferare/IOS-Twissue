@@ -17,6 +17,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet var summer:UILabel!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +32,6 @@ class FeedTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
     }
-    
 }
