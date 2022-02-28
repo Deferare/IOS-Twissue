@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import Firebase
 
 class ConfigViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,14 +20,14 @@ class ConfigViewController: UIViewController {
 
 extension ConfigViewController {
     @IBAction func signOutBtn(_ sender:UIButton){
-        do {
-            try Auth.auth().signOut()
-            UserDefaults.standard.removeObject(forKey: "accessToken")
-            UserDefaults.standard.removeObject(forKey: "accessSecretToken")
-            self.performSegue(withIdentifier: "ConfigToLogin", sender: nil)
-        } catch{
-            print("Error signing out: %@", error.localizedDescription)
-        }
+//        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+//        for key in UserDefaults.standard.dictionaryRepresentation().keys{
+//            UserDefaults.standard.removeObject(forKey: key)
+//        }
+        
+        UserDefaults.standard.removeObject(forKey: "oauthToken")
+        UserDefaults.standard.removeObject(forKey: "oauthTokenSecret")
+        self.performSegue(withIdentifier: "ConfigToLogin", sender: nil)
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class FeedViewController: UIViewController {
     
@@ -35,17 +34,17 @@ class FeedViewController: UIViewController {
             let feed:Feed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: summerTest)
             self.feeds.append(feed)
         }
-        TwitterAPI().testRequest()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if  UserDefaults.standard.value(forKey: "accessToken") != nil && UserDefaults.standard.value(forKey: "accessSecretToken") != nil{
+        if UserDefaults.standard.value(forKey: "oauthToken") != nil && UserDefaults.standard.value(forKey: "oauthTokenSecret") != nil {
             print("Current Success")
-        } else{
+        }else{
             self.performSegue(withIdentifier: "FeedToLogin", sender: nil)
         }
+        
     }
 }
 

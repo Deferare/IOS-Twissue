@@ -6,16 +6,27 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class SearchViewController: UIViewController {
-
+    
+    var twitterAPI:TwitterAPIProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     
-
+    @IBAction func testBtn(_ sender:UIButton){
+        self.twitterAPI.testRequest() { res in
+            true
+        }
+    }
     /*
     // MARK: - Navigation
 
