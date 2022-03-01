@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class FeedViewController: UIViewController {
     
@@ -41,12 +42,26 @@ class FeedViewController: UIViewController {
         
         if UserDefaults.standard.value(forKey: "oauthToken") != nil && UserDefaults.standard.value(forKey: "oauthTokenSecret") != nil {
             print("Current Success")
+            TwitterAPI.myClient.client.credential.oauthToken = UserDefaults.standard.value(forKey: "oauthToken") as! String
+            TwitterAPI.myClient.client.credential.oauthTokenSecret = UserDefaults.standard.value(forKey: "oauthTokenSecret") as! String
         }else{
             self.performSegue(withIdentifier: "FeedToLogin", sender: nil)
         }
         
     }
 }
+
+extension FeedViewController{
+    
+//    func loadFeed(){
+//        let para:OAuthSwift.Parameters = ["count":5]
+//        
+//        TwitterAPI().loadTweets(para)
+//    }
+    
+}
+
+
 
 extension FeedViewController:UITableViewDataSource{
     

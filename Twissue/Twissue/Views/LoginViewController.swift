@@ -6,18 +6,19 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class LoginViewController: UIViewController {
-    var oauthSwift = TwitterAPI()
     @IBOutlet var loginBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.isModalInPresentation = true
+        
     }
     
     
     @IBAction func loginBtnAction(_ sender:UIButton){
-        self.oauthSwift.login(self)
+        TwitterAPI().login(self)
     }
 }

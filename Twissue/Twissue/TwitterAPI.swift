@@ -12,32 +12,13 @@ import OAuthSwift
 
 
 class TwitterAPI{
-    var oauthSwift = OAuth1Swift(
-        consumerKey:    "zaLqWt4BY5UWpfpMkpbA0skkv",
-        consumerSecret: "KnisKRASciAnN7HDKMyAYSsrUri8iGRfGet6aJMvE2wiFmP4lz",
-        requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-        authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-        accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-    )
+    static var myClient = OAuth1Swift(consumerKey: "zaLqWt4BY5UWpfpMkpbA0skkv", consumerSecret: "KnisKRASciAnN7HDKMyAYSsrUri8iGRfGet6aJMvE2wiFmP4lz", requestTokenUrl: "https://api.twitter.com/oauth/request_token", authorizeUrl: "https://api.twitter.com/oauth/authorize", accessTokenUrl: "https://api.twitter.com/oauth/access_token")
 }
 
-extension TwitterAPI : TwitterAPIProtocol{
-    func testRequest(_ completion: @escaping (Bool) -> (Bool)) {
-        self.oauthSwift.client.request("https://api.twitter.com/2/tweets/1497855318713257987", method: .GET) {res in
-            switch res {
-            case .success(let response):
-                completion(true)
-                print(response.string)
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
-        
-    }
+extension TwitterAPI{
     
-    
-    func login(_ sender:UIViewController){
-        self.oauthSwift.authorize(
+    func login(_ sender:LoginViewController) {
+        TwitterAPI.myClient.authorize(
             withCallbackURL: "twissue://") { result in
                 switch result {
                 case .success(let (credential, response, parameters)):
@@ -55,15 +36,27 @@ extension TwitterAPI : TwitterAPIProtocol{
     }
     
     
-//    func requestTest(){
-//        self.oauthSwift.client.request("https://api.twitter.com/2/tweets/1497855318713257987", method: .GET) {res in
-//            switch res {
-//            case .success(let response):
-//                print(response.string)
-//            case .failure(let err):
-//                print(err.localizedDescription)
-//            }
-//        }
-//
-//    }
+    func getRequest(_ url:String, _ para:OAuthSwift.Parameters,_ complete: @escaping (Any) -> ()){
+        TwitterAPI.myClient.client.request(url, method: .GET, parameters: para) {res in
+            switch res {
+            case .success(let response):
+                complete(response)
+                
+            case .failure(let err):
+                complete(err)
+            }
+        }
+    }
 }
+
+
+//func requestTest(){
+//    TwitterAPI.myClient.client.request("https://api.twitter.com/2/tweets/1497855318713257987", method: .GET) {res in
+//        switch res {
+//        case .success(let response):
+//            print(response.string)
+//        case .failure(let err):
+//            print(err.localizedDescription)
+//        }
+//    }
+//}

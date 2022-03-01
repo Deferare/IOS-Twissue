@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import OAuthSwift
 
 
 protocol TwitterAPIProtocol{
-    func testRequest(_ completion: @escaping (Bool) -> (Bool))
+    func login()
+    func requestTest()
 }
