@@ -21,15 +21,6 @@ class SearchViewController: UIViewController {
     
     
     @IBAction func testBtn(_ sender:UIButton){
-        let para = ["count":3]
-        TwitterAPI().getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
-            guard let recive = res as? OAuthSwiftResponse else {return}
-            do {
-                let result = try recive.jsonObject() as! [NSDictionary]
-                print(result[0]["text"])
-                print(result[1]["text"])
-                print(result[2]["text"])
-            } catch{}
-        }
+
     }
 }

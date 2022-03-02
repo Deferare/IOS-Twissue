@@ -15,8 +15,9 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet var name:UILabel!
     @IBOutlet var time:UILabel!
     @IBOutlet var summer:UILabel!
-    
-    
+    @IBOutlet var replieBtn:UIButton!
+    @IBOutlet var heartBtn:UIButton!
+    @IBOutlet var retweetBtn:UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,20 +17,15 @@ class TwitterAPI{
 
 extension TwitterAPI{
     
-    func login(_ sender:LoginViewController) {
+    func login(_ complete: @escaping (_ credential:OAuthSwiftCredential?,_ response:OAuthSwiftResponse?,_ parameters:OAuthSwift.Parameters?) -> ()) {
         TwitterAPI.myClient.authorize(
             withCallbackURL: "twissue://") { result in
                 switch result {
                 case .success(let (credential, response, parameters)):
-                    print(credential.oauthToken)
-                    print(credential.oauthTokenSecret)
-                    print(parameters["user_id"])
-                    // Do your request
-                    UserDefaults.standard.setValue(credential.oauthToken, forKey: "oauthToken")
-                    UserDefaults.standard.setValue(credential.oauthTokenSecret, forKey: "oauthTokenSecret")
-                    sender.dismiss(animated: true, completion: nil)
+                    complete(credential, response, parameters)
                 case .failure(let error):
                   print(error.localizedDescription)
+                    complete(nil, nil, nil)
                 }
             }
     }

@@ -15,16 +15,10 @@ class ConfigViewController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
-
 }
 
 extension ConfigViewController {
     @IBAction func signOutBtn(_ sender:UIButton){
-//        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-//        for key in UserDefaults.standard.dictionaryRepresentation().keys{
-//            UserDefaults.standard.removeObject(forKey: key)
-//        }
-        
         UserDefaults.standard.removeObject(forKey: "oauthToken")
         UserDefaults.standard.removeObject(forKey: "oauthTokenSecret")
         self.performSegue(withIdentifier: "ConfigToLogin", sender: nil)
