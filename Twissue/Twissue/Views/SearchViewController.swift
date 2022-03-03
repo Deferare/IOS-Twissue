@@ -8,7 +8,8 @@
 import UIKit
 import OAuthSwift
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, VCProtocol {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -16,11 +17,16 @@ class SearchViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("Search View.")
+        
     }
     
-    
-    @IBAction func testBtn(_ sender:UIButton){
+}
 
+//MARK: - Custom
+extension SearchViewController{
+    
+    override func removeAllMy(){
+        
     }
+    
 }

@@ -9,73 +9,70 @@ import UIKit
 import OAuthSwift
 
 //MARK: - Circle
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, VCProtocol{
     
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
     var feeds = [Feed]()
+    let refresh = UIRefreshControl()
     
     @IBOutlet weak var feedTableView:UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.feedTableView?.dataSource = self
         self.feedTableView?.delegate = self
         self.heightHeader = self.feedTableView!.sectionHeaderHeight/2
         self.heightFooter = self.feedTableView!.sectionFooterHeight/2
         
+        self.loadFeed()
+        self.refresh.addTarget(self, action: #selector(loadFeed), for: .valueChanged)
+        self.feedTableView?.refreshControl = self.refresh
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear")
-        self.loginCheck()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FeedToLogin"{
-            if let vc = segue.destination as? LoginViewController {
-                vc.preFeedVC = self
-            }
-        }
+
     }
 }
 
 
 //MARK: - Custom
 extension FeedViewController{
-    func loginCheck() {
-        if UserDefaults.standard.value(forKey: "oauthToken") != nil && UserDefaults.standard.value(forKey: "oauthTokenSecret") != nil {
-            print("Current Success")
-            TwitterAPI.myClient.client.credential.oauthToken = UserDefaults.standard.value(forKey: "oauthToken") as! String
-            TwitterAPI.myClient.client.credential.oauthTokenSecret = UserDefaults.standard.value(forKey: "oauthTokenSecret") as! String
-        }else{
-            self.performSegue(withIdentifier: "FeedToLogin", sender: nil)
-        }
-    }
-    
-    func getFeed(){
-        let para:[String : Any] = ["count":15]
+    @objc
+    func loadFeed(){
+        let para:[String : Any] = ["count":3]
         TwitterAPI().getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             do {
                 let result = try recive.jsonObject() as! [NSDictionary]
+                self.feeds.removeAll()
+                
                 for i in 0..<result.count{
                     let newFeed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
                     self.feeds.append(newFeed)
-                    self.feedTableView?.reloadData()
                 }
+                print(self.feeds)
+                self.feedTableView?.reloadData()
+                if UserDefaults.standard.value(forKey: "SignCheck") != nil{
+                    self.refresh.endRefreshing()
+                }
+                
+    
             } catch{
-                print("getFeed fail.")
+                print("loadFeed fail.")
             }
         }
+    }
+    
+    override func removeAllMy(){
+        self.feeds.removeAll()
     }
 }
 

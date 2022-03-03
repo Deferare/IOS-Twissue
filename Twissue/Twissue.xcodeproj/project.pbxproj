@@ -22,6 +22,7 @@
 		5D77A02B27C60BD70054BD71 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */; };
 		5D7B3A4727C8573A005F5A85 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B3A4627C8573A005F5A85 /* Feed.swift */; };
 		5DB55C9A27BC981D003139EB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB55C9927BC981D003139EB /* Test.swift */; };
+		5DBF646D27D04BF000206A59 /* VCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF646C27D04BF000206A59 /* VCProtocol.swift */; };
 		5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */; };
 		5DCA3A7227BB4CF100A52A54 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */; };
 		5DE3F0B527CC4B36002E9598 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5DE3F0B427CC4B36002E9598 /* OAuthSwift */; };
@@ -46,6 +47,7 @@
 		5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		5D7B3A4627C8573A005F5A85 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		5DB55C9927BC981D003139EB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		5DBF646C27D04BF000206A59 /* VCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCProtocol.swift; sourceTree = "<group>"; };
 		5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		5DE3F0B927CC9005002E9598 /* TwitterAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPIProtocol.swift; sourceTree = "<group>"; };
@@ -69,10 +71,10 @@
 				5DCA3A7027BB4CD300A52A54 /* Items */,
 				5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */,
 				5D64320827B8BE300022536B /* FeedViewController.swift */,
-				5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */,
 				5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */,
 				5D77A02827C60B9A0054BD71 /* ChartViewController.swift */,
 				5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */,
+				5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +103,7 @@
 				5D64320627B8BE300022536B /* SceneDelegate.swift */,
 				5DE3F0B927CC9005002E9598 /* TwitterAPIProtocol.swift */,
 				5D77A02427C5E0AD0054BD71 /* TwitterAPI.swift */,
+				5DBF646C27D04BF000206A59 /* VCProtocol.swift */,
 				5D4E30D627B9EF1E001F8E41 /* Views */,
 				5DCA3A6D27BB4C6800A52A54 /* Models */,
 				5D64320A27B8BE300022536B /* Main.storyboard */,
@@ -221,6 +224,7 @@
 				5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */,
 				5DE3F0BA27CC9005002E9598 /* TwitterAPIProtocol.swift in Sources */,
 				5DCA3A7227BB4CF100A52A54 /* FeedTableViewCell.swift in Sources */,
+				5DBF646D27D04BF000206A59 /* VCProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -166,12 +166,11 @@
                     <navigationItem key="navigationItem" id="m6v-TN-vPk"/>
                     <connections>
                         <outlet property="feedTableView" destination="A0D-W5-yyN" id="B9s-7C-hGu"/>
-                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="FeedToLogin" id="07b-j7-eW5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pKR-oM-SYk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-312" y="49"/>
+            <point key="canvasLocation" x="-300" y="48"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="jOK-ig-gfl">
@@ -180,17 +179,6 @@
                     <view key="view" contentMode="scaleToFill" id="mNw-l4-1gm">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ok-YY-O78">
-                                <rect key="frame" x="110" y="372" width="171" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="testBtn:" destination="BDM-Ij-a2G" eventType="touchUpInside" id="oEA-Nt-Mor"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="N8H-1G-PfG"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                     </view>
@@ -293,7 +281,7 @@
                         </imageReference>
                     </tabBarItem>
                     <connections>
-                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="ConfigToLogin" id="0ux-xR-srn"/>
+                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="ConfigToSignin" id="0ux-xR-srn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygj-Eo-VhJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -367,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frF-Ne-4EO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-966.15384615384608" y="790.52132701421795"/>
+            <point key="canvasLocation" x="3135" y="-841"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="JaQ-5J-XFd">
@@ -384,7 +372,8 @@
                         <segue destination="mkl-xT-gkq" kind="relationship" relationship="viewControllers" id="QxN-GL-Br2"/>
                         <segue destination="BDM-Ij-a2G" kind="relationship" relationship="viewControllers" id="poa-Qs-954"/>
                         <segue destination="wXp-Ow-dMf" kind="relationship" relationship="viewControllers" id="YSh-2h-a8i"/>
-                        <segue destination="4Uf-5t-LjA" kind="relationship" relationship="viewControllers" id="lQu-jY-qx2"/>
+                        <segue destination="4Uf-5t-LjA" kind="relationship" relationship="viewControllers" destinationCreationSelector="Config" id="lQu-jY-qx2"/>
+                        <segue destination="01m-yV-Dxb" kind="show" identifier="TabToSignin" id="EIw-DD-5na"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-NI-S0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -393,7 +382,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="07b-j7-eW5"/>
+        <segue reference="EIw-DD-5na"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
