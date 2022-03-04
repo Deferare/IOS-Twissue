@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IXh-Zs-LBU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9tW-RX-P3k">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -280,18 +280,33 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
-                    <connections>
-                        <segue destination="01m-yV-Dxb" kind="presentation" identifier="ConfigToSignin" id="0ux-xR-srn"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygj-Eo-VhJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2083" y="48"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Signin Background View Controller-->
+        <scene sceneID="g6O-Ed-cs9">
+            <objects>
+                <viewController storyboardIdentifier="SigninB" id="9tW-RX-P3k" customClass="SigninBackgroundViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rJB-r1-gH5">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="u9d-Ab-ybr"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="01m-yV-Dxb" kind="show" identifier="SBtoSignin" id="gaN-pB-dnr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnp-dn-Wlc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1218" y="-791"/>
+        </scene>
+        <!--Signin View Controller-->
         <scene sceneID="7cj-NC-Asg">
             <objects>
-                <viewController storyboardIdentifier="loginView" id="01m-yV-Dxb" customClass="LoginViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" id="01m-yV-Dxb" customClass="SigninViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ArE-Qr-9GK">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -355,12 +370,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frF-Ne-4EO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3135" y="-841"/>
+            <point key="canvasLocation" x="-60" y="-791"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="JaQ-5J-XFd">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IXh-Zs-LBU" customClass="TabBarViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="EntryTab" automaticallyAdjustsScrollViewInsets="NO" id="IXh-Zs-LBU" customClass="TabBarViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="f6h-MZ-xT0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="Xe7-ER-vzS">
@@ -369,11 +384,11 @@
                         <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
+                        <outlet property="mainTabbar" destination="Xe7-ER-vzS" id="1Ss-j0-3aj"/>
                         <segue destination="mkl-xT-gkq" kind="relationship" relationship="viewControllers" id="QxN-GL-Br2"/>
                         <segue destination="BDM-Ij-a2G" kind="relationship" relationship="viewControllers" id="poa-Qs-954"/>
                         <segue destination="wXp-Ow-dMf" kind="relationship" relationship="viewControllers" id="YSh-2h-a8i"/>
-                        <segue destination="4Uf-5t-LjA" kind="relationship" relationship="viewControllers" destinationCreationSelector="Config" id="lQu-jY-qx2"/>
-                        <segue destination="01m-yV-Dxb" kind="show" identifier="TabToSignin" id="EIw-DD-5na"/>
+                        <segue destination="4Uf-5t-LjA" kind="relationship" relationship="viewControllers" id="lQu-jY-qx2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPF-NI-S0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,9 +396,6 @@
             <point key="canvasLocation" x="920" y="-791"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="EIw-DD-5na"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>

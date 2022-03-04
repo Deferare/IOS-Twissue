@@ -17,7 +17,7 @@ class TwitterAPI{
 
 extension TwitterAPI{
     
-    func login(_ complete: @escaping (_ credential:OAuthSwiftCredential?,_ response:OAuthSwiftResponse?,_ parameters:OAuthSwift.Parameters?) -> ()) {
+    static func login(_ complete: @escaping (_ credential:OAuthSwiftCredential?,_ response:OAuthSwiftResponse?,_ parameters:OAuthSwift.Parameters?) -> ()) {
         TwitterAPI.myClient.authorize(
             withCallbackURL: "twissue://") { result in
                 switch result {
@@ -31,7 +31,7 @@ extension TwitterAPI{
     }
     
     
-    func getRequest(_ url:String, _ para:OAuthSwift.Parameters,_ complete: @escaping (Any) -> ()){
+    static func getRequest(_ url:String, _ para:OAuthSwift.Parameters,_ complete: @escaping (Any) -> ()){
         TwitterAPI.myClient.client.request(url, method: .GET, parameters: para) {res in
             switch res {
             case .success(let response):

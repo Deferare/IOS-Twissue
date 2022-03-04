@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D03F46F27D196310053EA91 /* SigninBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */; };
 		5D3B6F0D27C742B700DF92D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B6F0C27C742B700DF92D1 /* User.swift */; };
-		5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */; };
+		5D4E30D827B9EF3D001F8E41 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */; };
 		5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */; };
 		5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */; };
 		5D64320527B8BE300022536B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D64320427B8BE300022536B /* AppDelegate.swift */; };
@@ -30,8 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninBackgroundViewController.swift; sourceTree = "<group>"; };
 		5D3B6F0C27C742B700DF92D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5D64320127B8BE300022536B /* Twissue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twissue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +76,8 @@
 				5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */,
 				5D77A02827C60B9A0054BD71 /* ChartViewController.swift */,
 				5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */,
-				5D4E30D727B9EF3D001F8E41 /* LoginViewController.swift */,
+				5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */,
+				5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			files = (
 				5D3B6F0D27C742B700DF92D1 /* User.swift in Sources */,
 				5D64320927B8BE300022536B /* FeedViewController.swift in Sources */,
+				5D03F46F27D196310053EA91 /* SigninBackgroundViewController.swift in Sources */,
 				5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */,
 				5D7B3A4727C8573A005F5A85 /* Feed.swift in Sources */,
 				5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */,
@@ -219,7 +223,7 @@
 				5D77A02B27C60BD70054BD71 /* ConfigViewController.swift in Sources */,
 				5D77A02927C60B9A0054BD71 /* ChartViewController.swift in Sources */,
 				5DB55C9A27BC981D003139EB /* Test.swift in Sources */,
-				5D4E30D827B9EF3D001F8E41 /* LoginViewController.swift in Sources */,
+				5D4E30D827B9EF3D001F8E41 /* SigninViewController.swift in Sources */,
 				5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */,
 				5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */,
 				5DE3F0BA27CC9005002E9598 /* TwitterAPIProtocol.swift in Sources */,

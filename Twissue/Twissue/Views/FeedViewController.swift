@@ -20,11 +20,11 @@ class FeedViewController: UIViewController, VCProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.feedTableView?.dataSource = self
         self.feedTableView?.delegate = self
         self.heightHeader = self.feedTableView!.sectionHeaderHeight/2
         self.heightFooter = self.feedTableView!.sectionFooterHeight/2
+        print("FeedViewController - viewDidLoad")
         
         self.loadFeed()
         self.refresh.addTarget(self, action: #selector(loadFeed), for: .valueChanged)
@@ -38,38 +38,52 @@ class FeedViewController: UIViewController, VCProtocol{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
 }
 
 
 //MARK: - Custom
 extension FeedViewController{
+    
     @objc
     func loadFeed(){
         let para:[String : Any] = ["count":3]
-        TwitterAPI().getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+        
+        TwitterAPI.getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
+            self.feeds.removeAll()
             do {
                 let result = try recive.jsonObject() as! [NSDictionary]
-                self.feeds.removeAll()
-                
                 for i in 0..<result.count{
                     let newFeed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
                     self.feeds.append(newFeed)
                 }
-                print(self.feeds)
                 self.feedTableView?.reloadData()
-                if UserDefaults.standard.value(forKey: "SignCheck") != nil{
-                    self.refresh.endRefreshing()
-                }
-                
-    
+                self.refresh.endRefreshing()
             } catch{
                 print("loadFeed fail.")
             }
         }
     }
+    
+    func loadFeedMore(){
+        let para:[String : Any] = ["count":10]
+        TwitterAPI.getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+            guard let recive = res as? OAuthSwiftResponse else {return}
+            do {
+                let result = try recive.jsonObject() as! [NSDictionary]
+                for i in 0..<result.count{
+                    let newFeed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
+                    self.feeds.append(newFeed)
+                }
+                self.feedTableView?.reloadData()
+            } catch{
+                print("loadFeed fail.")
+            }
+        }
+    }
+    
     
     override func removeAllMy(){
         self.feeds.removeAll()
@@ -110,6 +124,11 @@ extension FeedViewController:UITableViewDelegate{
         return self.heightFooter!
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section+3 > self.feeds.count{
+            self.loadFeedMore()
+        }
+    }
 }
 
 

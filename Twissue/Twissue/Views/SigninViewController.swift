@@ -10,9 +10,8 @@ import OAuthSwift
 
 
 //MARK: - Circle
-class LoginViewController: UIViewController {
-    
-    var rootTabVC:TabBarViewController?
+class SigninViewController: UIViewController {
+    var signBackCV:SigninBackgroundViewController!
     
     @IBOutlet var loginBtn:UIButton!
     
@@ -25,17 +24,16 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if self.rootTabVC != nil{
-            self.rootTabVC?.reloadAllChild()
-        }
+        super.viewDidDisappear(animated)
+        self.signBackCV.signinCheck()
     }
 }
 
 
 //MARK: - Custom
-extension LoginViewController{
+extension SigninViewController{
     @IBAction func loginBtnAction(_ sender:UIButton){
-        TwitterAPI().login(){ credention, response, parameters in
+        TwitterAPI.login(){ credention, response, parameters in
             guard let credention = credention else {return}
             UserDefaults.standard.setValue(credention.oauthToken, forKey: "oauthToken")
             UserDefaults.standard.setValue(credention.oauthTokenSecret, forKey: "oauthTokenSecret")
