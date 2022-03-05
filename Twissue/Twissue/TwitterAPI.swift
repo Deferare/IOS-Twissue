@@ -31,7 +31,7 @@ extension TwitterAPI{
     }
     
     
-    static func getRequest(_ url:String, _ para:OAuthSwift.Parameters,_ complete: @escaping (Any) -> ()){
+    static func requestGET(_ url:String, _ para:OAuthSwift.Parameters,_ complete: @escaping (Any) -> ()){
         TwitterAPI.myClient.client.request(url, method: .GET, parameters: para) {res in
             switch res {
             case .success(let response):

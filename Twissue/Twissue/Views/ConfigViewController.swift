@@ -22,7 +22,7 @@ extension ConfigViewController {
     @IBAction func signOutBtn(_ sender:UIButton){
         UserDefaults.standard.removeObject(forKey: "oauthToken")
         UserDefaults.standard.removeObject(forKey: "oauthTokenSecret")
-        UserDefaults.standard.removeObject(forKey: "SignCheck")
+        UserDefaults.standard.removeObject(forKey: "userId")
         let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "SigninB")
         tabVC?.modalPresentationStyle = .fullScreen
         self.present(tabVC!, animated: true, completion: nil)

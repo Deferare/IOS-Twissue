@@ -39,6 +39,7 @@ class FeedViewController: UIViewController, VCProtocol{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
     }
 }
 
@@ -48,9 +49,8 @@ extension FeedViewController{
     
     @objc
     func loadFeed(){
-        let para:[String : Any] = ["count":3]
-        
-        TwitterAPI.getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+        let para:[String : Any] = ["count":100]
+        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             self.feeds.removeAll()
             do {
@@ -61,15 +61,13 @@ extension FeedViewController{
                 }
                 self.feedTableView?.reloadData()
                 self.refresh.endRefreshing()
-            } catch{
-                print("loadFeed fail.")
-            }
+            } catch{ print("loadFeed fail.")}
         }
     }
     
     func loadFeedMore(){
-        let para:[String : Any] = ["count":10]
-        TwitterAPI.getRequest("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+        let para:[String : Any] = ["count":100]
+        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             do {
                 let result = try recive.jsonObject() as! [NSDictionary]
@@ -78,12 +76,9 @@ extension FeedViewController{
                     self.feeds.append(newFeed)
                 }
                 self.feedTableView?.reloadData()
-            } catch{
-                print("loadFeed fail.")
-            }
+            } catch{print("loadFeed fail.")}
         }
     }
-    
     
     override func removeAllMy(){
         self.feeds.removeAll()

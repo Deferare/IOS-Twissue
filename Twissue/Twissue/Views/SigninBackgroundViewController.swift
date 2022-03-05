@@ -29,7 +29,7 @@ class SigninBackgroundViewController: UIViewController {
 
 extension SigninBackgroundViewController{
     func signinCheck(){
-        if UserDefaults.standard.value(forKey: "SignCheck") != nil{
+        if UserDefaults.standard.value(forKey: "userId") != nil{
             TwitterAPI.myClient.client.credential.oauthToken = UserDefaults.standard.value(forKey: "oauthToken") as! String
             TwitterAPI.myClient.client.credential.oauthTokenSecret = UserDefaults.standard.value(forKey: "oauthTokenSecret") as! String
             let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "EntryTab")

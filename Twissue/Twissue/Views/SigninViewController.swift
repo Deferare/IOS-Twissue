@@ -34,10 +34,10 @@ class SigninViewController: UIViewController {
 extension SigninViewController{
     @IBAction func loginBtnAction(_ sender:UIButton){
         TwitterAPI.login(){ credention, response, parameters in
-            guard let credention = credention else {return}
-            UserDefaults.standard.setValue(credention.oauthToken, forKey: "oauthToken")
-            UserDefaults.standard.setValue(credention.oauthTokenSecret, forKey: "oauthTokenSecret")
-            UserDefaults.standard.setValue(true, forKey: "SignCheck")
+            guard let parameters = parameters else {return}
+            UserDefaults.standard.setValue(parameters["oauth_token"], forKey: "oauthToken")
+            UserDefaults.standard.setValue(parameters["oauth_token_secret"], forKey: "oauthTokenSecret")
+            UserDefaults.standard.setValue(parameters["user_id"], forKey: "userId")
             self.dismiss(animated: true, completion: nil)
         }
     }

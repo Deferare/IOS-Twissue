@@ -22,6 +22,8 @@
 		5D77A02927C60B9A0054BD71 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02827C60B9A0054BD71 /* ChartViewController.swift */; };
 		5D77A02B27C60BD70054BD71 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */; };
 		5D7B3A4727C8573A005F5A85 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B3A4627C8573A005F5A85 /* Feed.swift */; };
+		5DA0FF7E27D3231500AB4EE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */; };
+		5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */; };
 		5DB55C9A27BC981D003139EB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB55C9927BC981D003139EB /* Test.swift */; };
 		5DBF646D27D04BF000206A59 /* VCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF646C27D04BF000206A59 /* VCProtocol.swift */; };
 		5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */; };
@@ -48,6 +50,7 @@
 		5D77A02827C60B9A0054BD71 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		5D7B3A4627C8573A005F5A85 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DB55C9927BC981D003139EB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5DBF646C27D04BF000206A59 /* VCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCProtocol.swift; sourceTree = "<group>"; };
 		5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */,
 				5DE3F0B527CC4B36002E9598 /* OAuthSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +105,7 @@
 		5D64320327B8BE300022536B /* Twissue */ = {
 			isa = PBXGroup;
 			children = (
+				5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */,
 				5D64321227B8BE300022536B /* Info.plist */,
 				5D64320427B8BE300022536B /* AppDelegate.swift */,
 				5D64320627B8BE300022536B /* SceneDelegate.swift */,
@@ -153,6 +158,7 @@
 			name = Twissue;
 			packageProductDependencies = (
 				5DE3F0B427CC4B36002E9598 /* OAuthSwift */,
+				5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */,
 			);
 			productName = Twissue;
 			productReference = 5D64320127B8BE300022536B /* Twissue.app */;
@@ -184,6 +190,7 @@
 			mainGroup = 5D6431F827B8BE300022536B;
 			packageReferences = (
 				5DE3F0B327CC4B36002E9598 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5D64320227B8BE300022536B /* Products */;
 			projectDirPath = "";
@@ -200,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D64321127B8BE300022536B /* LaunchScreen.storyboard in Resources */,
+				5DA0FF7E27D3231500AB4EE1 /* GoogleService-Info.plist in Resources */,
 				5D64320E27B8BE300022536B /* Assets.xcassets in Resources */,
 				5D64320C27B8BE300022536B /* Main.storyboard in Resources */,
 			);
@@ -456,6 +464,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5DE3F0B327CC4B36002E9598 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -467,6 +483,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
 		5DE3F0B427CC4B36002E9598 /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5DE3F0B327CC4B36002E9598 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
