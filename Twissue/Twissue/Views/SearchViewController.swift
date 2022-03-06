@@ -20,7 +20,7 @@ class SearchViewController: UIViewController, VCProtocol {
         super.viewDidAppear(animated)
         
         
-        self.getIds()
+        
     }
     
 }
@@ -32,16 +32,6 @@ extension SearchViewController{
         
     }
     
-    func getIds(){
-        let para:[String : Any] = [:]
-        TwitterAPI.requestGET("https://api.twitter.com/2/users/\(UserDefaults.standard.value(forKey: "userId")!)/following", para) { res in
-            guard let res = res as? OAuthSwiftResponse else {return}
-            do {
-                if let result = try res.jsonObject() as? NSDictionary {
-                    print(result)
-                }
-            } catch {print("getIds Err.")}
-        }
-    }
+
     
 }

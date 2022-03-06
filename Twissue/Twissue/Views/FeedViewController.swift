@@ -46,10 +46,13 @@ class FeedViewController: UIViewController, VCProtocol{
 
 //MARK: - Custom
 extension FeedViewController{
-    
     @objc
     func loadFeed(){
-        let para:[String : Any] = ["count":100]
+        let para:[String : Any] = ["count":200,
+                                   "exclude_replies":true,
+                                   "include_entities":true,
+                                   "trim_user":true]
+        
         TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             self.feeds.removeAll()
@@ -66,7 +69,11 @@ extension FeedViewController{
     }
     
     func loadFeedMore(){
-        let para:[String : Any] = ["count":100]
+        let para:[String : Any] = ["count":200,
+                                   "exclude_replies":true,
+                                   "include_entities":true,
+                                   "trim_user":true]
+        
         TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             do {
