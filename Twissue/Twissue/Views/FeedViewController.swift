@@ -7,13 +7,15 @@
 
 import UIKit
 import OAuthSwift
+import Alamofire
 
 //MARK: - Circle
 class FeedViewController: UIViewController, VCProtocol{
     
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
-    var feeds = [Feed]()
+    var tweets = [Tweet]()
+    
     let refresh = UIRefreshControl()
     
     @IBOutlet weak var feedTableView:UITableView?
@@ -26,8 +28,9 @@ class FeedViewController: UIViewController, VCProtocol{
         self.heightFooter = self.feedTableView!.sectionFooterHeight/2
         print("FeedViewController - viewDidLoad")
         
+
         self.loadFeed()
-        self.refresh.addTarget(self, action: #selector(loadFeed), for: .valueChanged)
+        self.refresh.addTarget(self, action: #selector(self.loadFeed), for: .valueChanged)
         self.feedTableView?.refreshControl = self.refresh
     }
     
@@ -39,7 +42,6 @@ class FeedViewController: UIViewController, VCProtocol{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
     }
 }
 
@@ -50,45 +52,46 @@ extension FeedViewController{
     func loadFeed(){
         let para:[String : Any] = ["count":200,
                                    "exclude_replies":true,
-                                   "include_entities":true,
-                                   "trim_user":true]
-        
+                                   "include_rts":0]
         TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
-            self.feeds.removeAll()
+            let decoder = JSONDecoder()
             do {
-                let result = try recive.jsonObject() as! [NSDictionary]
-                for i in 0..<result.count{
-                    let newFeed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
-                    self.feeds.append(newFeed)
+                self.tweets = try decoder.decode([Tweet].self, from: recive.data)
+                for i in 0..<self.tweets.count{
+                    AF.request(self.tweets[i].user.profileImageUrlHttps).response { data in
+                        self.tweets[i].profileImage = UIImage(data: data.data!, scale:1)
+                    }
                 }
+                
                 self.feedTableView?.reloadData()
                 self.refresh.endRefreshing()
-            } catch{ print("loadFeed fail.")}
+            } catch{
+                print("loadFeed fail.")
+                print(res)
+            }
         }
     }
     
     func loadFeedMore(){
-        let para:[String : Any] = ["count":200,
-                                   "exclude_replies":true,
-                                   "include_entities":true,
-                                   "trim_user":true]
-        
-        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
-            guard let recive = res as? OAuthSwiftResponse else {return}
-            do {
-                let result = try recive.jsonObject() as! [NSDictionary]
-                for i in 0..<result.count{
-                    let newFeed = Feed(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
-                    self.feeds.append(newFeed)
-                }
-                self.feedTableView?.reloadData()
-            } catch{print("loadFeed fail.")}
-        }
+//        let para:[String : Any] = ["count":200,
+//                                   "exclude_replies":true]
+//
+//        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+//            guard let recive = res as? OAuthSwiftResponse else {return}
+//            do {
+//                let result = try recive.jsonObject() as! [NSDictionary]
+//                for i in 0..<result.count{
+//                    let newFeed = Tweet(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
+//                    self.tweets.append(newFeed)
+//                }
+//                self.feedTableView?.reloadData()
+//            } catch{print("loadFeed fail.")}
+//        }
     }
     
     override func removeAllMy(){
-        self.feeds.removeAll()
+        self.tweets.removeAll()
     }
 }
 
@@ -103,19 +106,21 @@ extension FeedViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
-        cell.profilePhoto.image = self.feeds[indexPath.section].proFilePhoto
-        cell.name.text = self.feeds[indexPath.section].name
-        cell.time.text = self.feeds[indexPath.section].time
-        cell.summer.text = self.feeds[indexPath.section].summer
+        cell.profilePhoto.image = self.tweets[indexPath.section].profileImage
+        cell.name.text = self.tweets[indexPath.section].user.name
+        cell.createAt.text = self.tweets[indexPath.section].createdAt
+        cell.summer.text = self.tweets[indexPath.section].text
+        cell.commentBtn.subtitleLabel?.text = "0"
+        cell.favoriteBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].favoriteCount)
+        cell.retweetBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].retweetCount)
         return cell
     }
-    
 }
 
 extension FeedViewController:UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.feeds.count
+        return self.tweets.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -127,7 +132,7 @@ extension FeedViewController:UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section+3 > self.feeds.count{
+        if indexPath.section+3 > self.tweets.count{
             self.loadFeedMore()
         }
     }

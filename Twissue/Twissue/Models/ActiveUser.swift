@@ -8,11 +8,11 @@
 import Foundation
 
 
-struct User{
+struct ActiveUser{
     var displayName:String?
     var photoURL:String?
 }
 
-extension User{
+extension ActiveUser{
 
 }

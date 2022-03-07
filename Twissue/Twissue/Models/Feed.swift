@@ -9,13 +9,14 @@ import Foundation
 import UIKit
 
 struct Feed{
+    var createdAt:String?
     var proFilePhoto:UIImage?
     var name:String?
     var time:String?
     var summer:String?
     var replieNumber:Int?
-    var heartNumber:Int?
-    var retweetNumber:Int?
+    var favoriteCount:Int?
+    var retweetCount:Int?
 }
 
 

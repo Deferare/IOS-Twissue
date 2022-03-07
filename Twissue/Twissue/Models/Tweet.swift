@@ -6,21 +6,33 @@
 //
 
 import Foundation
-
-
+import UIKit
+import Alamofire
 
 
 struct Tweet:Codable {
-    var data:Data2
-}
-
-struct Data2:Codable{
-    var id:String
+    struct User:Codable{
+        var name:String
+        var profileImageUrlHttps:String
+        enum CodingKeys:String,CodingKey{
+            case name
+            case profileImageUrlHttps = "profile_image_url_https"
+        }
+    }
+    
+    var user:User
+    var createdAt:String
     var text:String
+    var retweetCount:Int
+    var favoriteCount:Int
+    
+    enum CodingKeys:String,CodingKey{
+        case user, text
+        case createdAt = "created_at"
+        case retweetCount = "retweet_count"
+        case favoriteCount = "favorite_count"
+    }
+    
+    
+    var profileImage:UIImage?
 }
-//{
-//    "data": {
-//        "id": "20",
-//        "text": "just setting up my twttr"
-//    }
-//}

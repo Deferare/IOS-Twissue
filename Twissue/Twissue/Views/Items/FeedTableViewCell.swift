@@ -13,10 +13,11 @@ class FeedTableViewCell: UITableViewCell {
     
     @IBOutlet var profilePhoto:UIImageView!
     @IBOutlet var name:UILabel!
-    @IBOutlet var time:UILabel!
+    @IBOutlet var createAt:UILabel!
     @IBOutlet var summer:UILabel!
-    @IBOutlet var replieBtn:UIButton!
-    @IBOutlet var heartBtn:UIButton!
+    @IBOutlet var summerPhoto:UIImageView!
+    @IBOutlet var commentBtn:UIButton!
+    @IBOutlet var favoriteBtn:UIButton!
     @IBOutlet var retweetBtn:UIButton!
     
     override func awakeFromNib() {

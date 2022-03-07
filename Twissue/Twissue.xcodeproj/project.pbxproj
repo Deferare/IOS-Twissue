@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D03F46F27D196310053EA91 /* SigninBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */; };
-		5D3B6F0D27C742B700DF92D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B6F0C27C742B700DF92D1 /* User.swift */; };
+		5D3B6F0D27C742B700DF92D1 /* ActiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B6F0C27C742B700DF92D1 /* ActiveUser.swift */; };
 		5D4E30D827B9EF3D001F8E41 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */; };
 		5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */; };
 		5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */; };
@@ -24,6 +24,7 @@
 		5D7B3A4727C8573A005F5A85 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B3A4627C8573A005F5A85 /* Feed.swift */; };
 		5DA0FF7E27D3231500AB4EE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */; };
 		5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */; };
+		5DA9F6B427D5B69400A663DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5DA9F6B327D5B69400A663DB /* Alamofire */; };
 		5DB55C9A27BC981D003139EB /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB55C9927BC981D003139EB /* Test.swift */; };
 		5DBF646D27D04BF000206A59 /* VCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBF646C27D04BF000206A59 /* VCProtocol.swift */; };
 		5DCA3A6F27BB4C8000A52A54 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */; };
@@ -34,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninBackgroundViewController.swift; sourceTree = "<group>"; };
-		5D3B6F0C27C742B700DF92D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D3B6F0C27C742B700DF92D1 /* ActiveUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveUser.swift; sourceTree = "<group>"; };
 		5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		5D4E30D927BA0F66001F8E41 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5D4E30DD27BA1687001F8E41 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA9F6B427D5B69400A663DB /* Alamofire in Frameworks */,
 				5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */,
 				5DE3F0B527CC4B36002E9598 /* OAuthSwift in Frameworks */,
 			);
@@ -126,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */,
-				5D3B6F0C27C742B700DF92D1 /* User.swift */,
+				5D3B6F0C27C742B700DF92D1 /* ActiveUser.swift */,
 				5D7B3A4627C8573A005F5A85 /* Feed.swift */,
 			);
 			path = Models;
@@ -159,6 +161,7 @@
 			packageProductDependencies = (
 				5DE3F0B427CC4B36002E9598 /* OAuthSwift */,
 				5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */,
+				5DA9F6B327D5B69400A663DB /* Alamofire */,
 			);
 			productName = Twissue;
 			productReference = 5D64320127B8BE300022536B /* Twissue.app */;
@@ -191,6 +194,7 @@
 			packageReferences = (
 				5DE3F0B327CC4B36002E9598 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5DA9F6B227D5B69400A663DB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 5D64320227B8BE300022536B /* Products */;
 			projectDirPath = "";
@@ -220,7 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D3B6F0D27C742B700DF92D1 /* User.swift in Sources */,
+				5D3B6F0D27C742B700DF92D1 /* ActiveUser.swift in Sources */,
 				5D64320927B8BE300022536B /* FeedViewController.swift in Sources */,
 				5D03F46F27D196310053EA91 /* SigninBackgroundViewController.swift in Sources */,
 				5D4E30DE27BA1687001F8E41 /* SearchViewController.swift in Sources */,
@@ -472,6 +476,14 @@
 				kind = branch;
 			};
 		};
+		5DA9F6B227D5B69400A663DB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5DE3F0B327CC4B36002E9598 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
@@ -487,6 +499,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
+		};
+		5DA9F6B327D5B69400A663DB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DA9F6B227D5B69400A663DB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		5DE3F0B427CC4B36002E9598 /* OAuthSwift */ = {
 			isa = XCSwiftPackageProductDependency;
