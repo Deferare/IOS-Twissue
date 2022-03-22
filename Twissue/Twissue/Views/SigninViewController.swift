@@ -27,6 +27,10 @@ class SigninViewController: UIViewController {
         super.viewDidDisappear(animated)
         self.signBackCV.signinCheck()
     }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
 }
 
 

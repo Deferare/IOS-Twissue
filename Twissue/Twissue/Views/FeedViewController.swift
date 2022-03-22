@@ -18,17 +18,16 @@ class FeedViewController: UIViewController, VCProtocol{
     
     let refresh = UIRefreshControl()
     
-    @IBOutlet weak var feedTableView:UITableView?
+    @IBOutlet weak var feedTableView:UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.feedTableView?.dataSource = self
-        self.feedTableView?.delegate = self
-        self.heightHeader = self.feedTableView!.sectionHeaderHeight/2
-        self.heightFooter = self.feedTableView!.sectionFooterHeight/2
+        self.feedTableView.dataSource = self
+        self.feedTableView.delegate = self
+        self.heightHeader = self.feedTableView.sectionHeaderHeight/2
+        self.heightFooter = self.feedTableView.sectionFooterHeight/2
         print("FeedViewController - viewDidLoad")
         
-
         self.loadFeed()
         self.refresh.addTarget(self, action: #selector(self.loadFeed), for: .valueChanged)
         self.feedTableView?.refreshControl = self.refresh
@@ -43,13 +42,18 @@ class FeedViewController: UIViewController, VCProtocol{
         super.viewDidAppear(animated)
         
     }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
+
 }
 
 
 //MARK: - Custom
 extension FeedViewController{
     @objc
-    func loadFeed(){
+    func loadFeed() {
         let para:[String : Any] = ["count":200,
                                    "exclude_replies":true,
                                    "include_rts":0]
@@ -62,32 +66,25 @@ extension FeedViewController{
                     AF.request(self.tweets[i].user.profileImageUrlHttps).response { data in
                         self.tweets[i].profileImage = UIImage(data: data.data!, scale:1)
                     }
+                    if self.tweets[i].entities.media != nil{
+                        AF.request(self.tweets[i].entities.media![0].mediaUrlHttps).response { data in
+                            self.tweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                        }
+                    }
                 }
                 
                 self.feedTableView?.reloadData()
                 self.refresh.endRefreshing()
-            } catch{
+            } catch(let error){
                 print("loadFeed fail.")
-                print(res)
+                print(error.localizedDescription)
             }
         }
+
     }
     
     func loadFeedMore(){
-//        let para:[String : Any] = ["count":200,
-//                                   "exclude_replies":true]
-//
-//        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
-//            guard let recive = res as? OAuthSwiftResponse else {return}
-//            do {
-//                let result = try recive.jsonObject() as! [NSDictionary]
-//                for i in 0..<result.count{
-//                    let newFeed = Tweet(proFilePhoto: UIImage(systemName: "person.fill"), name: "Def", time: "2M 24D", summer: result[i]["text"] as? String)
-//                    self.tweets.append(newFeed)
-//                }
-//                self.feedTableView?.reloadData()
-//            } catch{print("loadFeed fail.")}
-//        }
+
     }
     
     override func removeAllMy(){
@@ -105,12 +102,16 @@ extension FeedViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as! FeedTableViewCell
+        let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as! FeedTableViewCell
         cell.profilePhoto.image = self.tweets[indexPath.section].profileImage
         cell.name.text = self.tweets[indexPath.section].user.name
         cell.createAt.text = self.tweets[indexPath.section].createdAt
         cell.summer.text = self.tweets[indexPath.section].text
         cell.commentBtn.subtitleLabel?.text = "0"
+        if cell.summerPhoto != nil{
+            cell.summerPhoto!.image = self.tweets[indexPath.section].mediaPhoto
+        }
+        
         cell.favoriteBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].favoriteCount)
         cell.retweetBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].retweetCount)
         return cell

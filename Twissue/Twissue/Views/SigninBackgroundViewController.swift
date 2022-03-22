@@ -25,6 +25,10 @@ class SigninBackgroundViewController: UIViewController {
             siginCV.signBackCV = self
         }
     }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
 }
 
 extension SigninBackgroundViewController{

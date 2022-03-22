@@ -27,6 +27,10 @@ class ChartViewController: UIViewController, VCProtocol {
         self.ref.child("Test_1").setValue(["name":self.cnt])
         self.cnt += 1
     }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
 }
 
 extension ChartViewController{
