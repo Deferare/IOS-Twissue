@@ -21,6 +21,8 @@
 		5D77A02527C5E0AD0054BD71 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02427C5E0AD0054BD71 /* TwitterAPI.swift */; };
 		5D77A02927C60B9A0054BD71 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02827C60B9A0054BD71 /* ChartViewController.swift */; };
 		5D77A02B27C60BD70054BD71 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */; };
+		5D88024427EACF4500544106 /* SearchViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D88024327EACF4500544106 /* SearchViewTableCell.swift */; };
+		5D88024627EADB2F00544106 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D88024527EADB2F00544106 /* Search.swift */; };
 		5DA0FF7E27D3231500AB4EE1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */; };
 		5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */; };
 		5DA9F6B427D5B69400A663DB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 5DA9F6B327D5B69400A663DB /* Alamofire */; };
@@ -49,6 +51,8 @@
 		5D77A02427C5E0AD0054BD71 /* TwitterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		5D77A02827C60B9A0054BD71 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		5D77A02A27C60BD70054BD71 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		5D88024327EACF4500544106 /* SearchViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewTableCell.swift; sourceTree = "<group>"; };
+		5D88024527EADB2F00544106 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		5DA0FF7D27D3231500AB4EE1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5DB55C9927BC981D003139EB /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5DBF646C27D04BF000206A59 /* VCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCProtocol.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				5DCA3A6E27BB4C8000A52A54 /* Tweet.swift */,
+				5D88024527EADB2F00544106 /* Search.swift */,
 				5D3B6F0C27C742B700DF92D1 /* ActiveUser.swift */,
 			);
 			path = Models;
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5DCA3A7127BB4CF100A52A54 /* FeedTableViewCell.swift */,
+				5D88024327EACF4500544106 /* SearchViewTableCell.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -230,7 +236,9 @@
 				5D77A02527C5E0AD0054BD71 /* TwitterAPI.swift in Sources */,
 				5D77A02B27C60BD70054BD71 /* ConfigViewController.swift in Sources */,
 				5D77A02927C60B9A0054BD71 /* ChartViewController.swift in Sources */,
+				5D88024627EADB2F00544106 /* Search.swift in Sources */,
 				5DB55C9A27BC981D003139EB /* Test.swift in Sources */,
+				5D88024427EACF4500544106 /* SearchViewTableCell.swift in Sources */,
 				5D4E30D827B9EF3D001F8E41 /* SigninViewController.swift in Sources */,
 				5D4E30DA27BA0F66001F8E41 /* TabBarViewController.swift in Sources */,
 				5D64320727B8BE300022536B /* SceneDelegate.swift in Sources */,
