@@ -19,8 +19,10 @@ class SearchViewController: UIViewController, VCProtocol {
     
     var images = [UIImage]()
     
-    
+    var query = ""
+    var preSection = 0
     var nextToken:String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,37 +51,48 @@ class SearchViewController: UIViewController, VCProtocol {
 extension SearchViewController{
     override func removeAllMy(){}
     
-    func searchImage(_ query:String){
-        let para:[String : Any] = ["query":query,
-                                   "max_results":100,
-                                   "expansions":"attachments.media_keys",
-                                   "media.fields":"media_key,type,url"]
+    func requestImages(_ para:[String:Any]){
         TwitterAPI.requestGET("https://api.twitter.com/2/tweets/search/recent", para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             let decoder = JSONDecoder()
             do {
                 let datas = try decoder.decode(Search.self, from: recive.data)
-                
-                for media in datas.includes.media{
-                    if media.type == "photo"{
-                        AF.request(media.url!).response { data in
-                            print(data)
+                self.nextToken = datas.meta.nextToken
+                let dataCnt = datas.includes.media.count
+                for i in 0..<dataCnt{
+                    if datas.includes.media[i].type == "photo"{
+                        AF.request(datas.includes.media[i].url!).response { data in
+                            print("data: ", data)
                             self.images.append(UIImage(data: data.data!, scale:1)!)
+                            DispatchQueue.main.async {
+                                self.searchTableView.reloadData()
+                            }
                         }
                     }
                 }
-                
-                
-                self.nextToken = datas.meta.nextToken
-//
-//                print(self.images)
-//                print(self.nextToken!)
-                
             } catch(let error){
                 print("loadFeed fail.")
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func loadImages() {
+        self.images.removeAll()
+        let para:[String : Any] = ["query":self.query,
+                                   "max_results":100,
+                                   "expansions":"attachments.media_keys",
+                                   "media.fields":"media_key,type,url"]
+        self.requestImages(para)
+    }
+    
+    func moreLoadImages() {
+        let para:[String : Any] = ["query":self.query,
+                                   "max_results":100,
+                                   "expansions":"attachments.media_keys",
+                                   "media.fields":"media_key,type,url",
+                                   "next_token":self.nextToken!]
+        self.requestImages(para)
     }
 }
 
@@ -105,16 +118,18 @@ extension SearchViewController:UISearchBarDelegate{
             self.view.layoutIfNeeded()
         }.startAnimation()
     }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.barToggle()
-        print(searchBar.text!)
-        
-        Task{
-             self.searchImage(searchBar.text!)
-            print(self.images)
-            await self.searchTableView.reloadData()
+        self.nextToken = ""
+        self.query = searchBar.text!
+        self.loadImages()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.last == " "{
+            _ = searchBar.text?.popLast()
         }
-        print("End")
     }
 }
 
@@ -126,9 +141,22 @@ extension SearchViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Adjust searchBar.
+        let sec = indexPath.section
+        if sec < self.preSection && self.searchBar.alpha == 0{
+            self.barToggle()
+        } else if sec > self.preSection && self.searchBar.alpha == 1{
+            self.barToggle()
+        }
+        
+        self.preSection = sec
+        if sec == self.images.count-2{
+            self.moreLoadImages()
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! SearchViewTableCell
-        print(indexPath)
-        cell.photo.image = self.images[indexPath.row]
+        cell.photo.image = self.images[sec]
         return cell
     }
 }
@@ -148,9 +176,7 @@ extension SearchViewController:UITableViewDelegate{
     }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.section+3 > self.tweets.count{
-//            self.loadFeedMore()
-//        }
+//
 //    }
 }
 

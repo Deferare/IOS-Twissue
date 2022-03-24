@@ -28,9 +28,9 @@ class FeedViewController: UIViewController, VCProtocol{
         self.heightFooter = self.feedTableView.sectionFooterHeight/2
         print("FeedViewController - viewDidLoad")
         
-//        self.loadFeed()
-//        self.refresh.addTarget(self, action: #selector(self.loadFeed), for: .valueChanged)
-//        self.feedTableView?.refreshControl = self.refresh
+        self.loadFeed()
+        self.refresh.addTarget(self, action: #selector(self.loadFeed), for: .valueChanged)
+        self.feedTableView?.refreshControl = self.refresh
     }
     
     override func viewWillAppear(_ animated: Bool) {

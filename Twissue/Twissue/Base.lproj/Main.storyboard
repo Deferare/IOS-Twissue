@@ -209,17 +209,17 @@
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" id="TbF-CK-Ac7" customClass="SearchViewTableCell" customModule="Twissue" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="350" height="151.66667175292969"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="157.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TbF-CK-Ac7" id="iDy-IL-HFl">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="151.66667175292969"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="157.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6M8-EA-hhB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="151.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="157.33333333333334"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-jc-Ks8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="151.66666666666666"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="157.33333333333334"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="350" id="ajr-b4-EYz"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="lyL-RS-iHJ"/>
