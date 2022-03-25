@@ -17,6 +17,7 @@ class FeedViewController: UIViewController, VCProtocol{
     var tweets = [Tweet]()
     
     let refresh = UIRefreshControl()
+    let notifiGenerator = UINotificationFeedbackGenerator()
     
     @IBOutlet weak var feedTableView:UITableView!
     
@@ -52,8 +53,8 @@ class FeedViewController: UIViewController, VCProtocol{
 
 //MARK: - Custom
 extension FeedViewController{
-    @objc
-    func loadFeed() {
+    
+    @objc func loadFeed() {
         let para:[String : Any] = ["count":200,
                                    "exclude_replies":true,
                                    "include_rts":0]
@@ -69,11 +70,17 @@ extension FeedViewController{
                     if self.tweets[i].entities.media != nil{
                         AF.request(self.tweets[i].entities.media![0].mediaUrlHttps).response { data in
                             self.tweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                            DispatchQueue.main.async {
+                                self.feedTableView?.reloadData()
+                            }
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            self.feedTableView?.reloadData()
                         }
                     }
                 }
-                
-                self.feedTableView?.reloadData()
+                self.notifiGenerator.notificationOccurred(.success)
                 self.refresh.endRefreshing()
             } catch(let error){
                 print("loadFeed fail.")
@@ -83,8 +90,40 @@ extension FeedViewController{
 
     }
     
-    func loadFeedMore(){
-
+    func moreLoadFeed(){
+        let para:[String : Any] = ["count":200,
+                                   "exclude_replies":true,
+                                   "include_rts":0]
+        TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
+            guard let recive = res as? OAuthSwiftResponse else {return}
+            let decoder = JSONDecoder()
+            do {
+                var newTweets = try decoder.decode([Tweet].self, from: recive.data)
+                for i in 0..<newTweets.count{
+                    AF.request(newTweets[i].user.profileImageUrlHttps).response { data in
+                        newTweets[i].profileImage = UIImage(data: data.data!, scale:1)
+                    }
+                    if newTweets[i].entities.media != nil{
+                        AF.request(newTweets[i].entities.media![0].mediaUrlHttps).response { data in
+                            newTweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                            self.tweets.append(newTweets[i])
+                            DispatchQueue.main.async {
+                                self.feedTableView?.reloadData()
+                            }
+                        }
+                    }else{
+                        self.tweets.append(newTweets[i])
+                        DispatchQueue.main.async {
+                            self.feedTableView?.reloadData()
+                        }
+                    }
+                }
+                
+            } catch(let error){
+                print("loadFeed fail.")
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func removeAllMy(){
@@ -134,7 +173,7 @@ extension FeedViewController:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section+3 > self.tweets.count{
-            self.loadFeedMore()
+            self.moreLoadFeed()
         }
     }
 }

@@ -12,17 +12,16 @@ import Alamofire
 class SearchViewController: UIViewController, VCProtocol {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var searchTableView:UITableView!
+    @IBOutlet var noData:UILabel!
     
-    let Width = UIScreen.main.bounds.width
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
     
     var images = [UIImage]()
     
-    var query = ""
-    var preSection = 0
-    var nextToken:String?
-    
+    var preTableSection = 0
+    var nextToken = ""
+    var para:Dictionary<String, Any>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,27 +31,33 @@ class SearchViewController: UIViewController, VCProtocol {
         
         self.heightHeader = searchTableView.sectionHeaderHeight/2
         self.heightFooter = searchTableView.sectionFooterHeight/2
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if self.searchBar.alpha == 0{
-            self.barToggle()
-        }
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.endEditing))
+        self.searchTableView.addGestureRecognizer(tap)
+        
+        self.para = ["query":"",
+                     "max_results":10,
+                     "expansions":"attachments.media_keys",
+                     "media.fields":"media_key,type,url"]
     }
     
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
+    
+    override var prefersStatusBarHidden: Bool{return true}
 }
 
 //MARK: - Custom
 extension SearchViewController{
-    override func removeAllMy(){}
     
-    func requestImages(_ para:[String:Any]){
-        TwitterAPI.requestGET("https://api.twitter.com/2/tweets/search/recent", para) {res in
+    
+    override func removeAllMy(){}
+    @objc func endEditing(){ self.view.endEditing(true)}
+        
+    func requestImages(){
+        //-is:retweet -is:Quote -is:reply
+        let q = "\(self.para!["query"]!)"
+        self.para!["query"] = "(\(q)) has:images"
+        print(self.para!["query"] as Any)
+        TwitterAPI.requestGET("https://api.twitter.com/2/tweets/search/recent", self.para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
             let decoder = JSONDecoder()
             do {
@@ -70,42 +75,46 @@ extension SearchViewController{
                         }
                     }
                 }
+                self.noData.alpha = 0
             } catch(let error){
                 print("loadFeed fail.")
                 print(error.localizedDescription)
+                if self.images.count == 0{
+                    self.noData.alpha = 1
+                }
+                self.nextToken = ""
+                DispatchQueue.main.async {
+                    self.searchTableView.reloadData()
+                }
             }
         }
+        self.para!["query"] = q
     }
     
     func loadImages() {
         self.images.removeAll()
-        let para:[String : Any] = ["query":self.query,
-                                   "max_results":100,
-                                   "expansions":"attachments.media_keys",
-                                   "media.fields":"media_key,type,url"]
-        self.requestImages(para)
+        self.para.removeValue(forKey: "next_token")
+        self.requestImages()
     }
     
     func moreLoadImages() {
-        let para:[String : Any] = ["query":self.query,
-                                   "max_results":100,
-                                   "expansions":"attachments.media_keys",
-                                   "media.fields":"media_key,type,url",
-                                   "next_token":self.nextToken!]
-        self.requestImages(para)
+        if self.nextToken != ""{
+            self.para["next_token"] = self.nextToken
+            self.requestImages()
+        }
     }
 }
 
 
 //MARK: - SearchBar
 extension SearchViewController:UISearchBarDelegate{
-    func barToggle(){
+    @objc func barToggle(){
         var newConst:CGFloat = 95.0
         var newAlpha:CGFloat = 1.0
         if self.searchBar.alpha != 0{
             newConst = 0.0
             newAlpha = 0.0
-            self.view.endEditing(true)
+            self.endEditing()
         }
         UIViewPropertyAnimator(duration: 0.2, curve: .easeOut){
             for const in self.view.constraints{
@@ -122,14 +131,27 @@ extension SearchViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.barToggle()
         self.nextToken = ""
-        self.query = searchBar.text!
+        let q = searchBar.text?.split(separator: " ")
+        var query = ""
+        var queryTag = ""
+        for i in 0..<q!.count{
+            query += "\(q![i])"
+            queryTag += "#\(q![i])"
+            if i != q!.count - 1{
+                query += " OR "
+                queryTag += " OR "
+            }
+        }
+        let querySent = "\(searchBar.text!)"
+        
+        self.para["query"] = "((\(querySent)) OR \(query) OR \(queryTag)"
         self.loadImages()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.last == " "{
-            _ = searchBar.text?.popLast()
-        }
+//        if searchText.last == " "{
+//            _ = searchBar.text?.popLast()
+//        }
     }
 }
 
@@ -144,13 +166,13 @@ extension SearchViewController:UITableViewDataSource{
         
         // Adjust searchBar.
         let sec = indexPath.section
-        if sec < self.preSection && self.searchBar.alpha == 0{
+        if sec < self.preTableSection && self.searchBar.alpha == 0{
             self.barToggle()
-        } else if sec > self.preSection && self.searchBar.alpha == 1{
+        } else if sec > self.preTableSection && self.searchBar.alpha == 1{
             self.barToggle()
-        }
+        } //
         
-        self.preSection = sec
+        self.preTableSection = sec
         if sec == self.images.count-2{
             self.moreLoadImages()
         }
@@ -174,9 +196,5 @@ extension SearchViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return self.heightFooter!
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//
-//    }
 }
 
