@@ -44,10 +44,7 @@ class FeedViewController: UIViewController, VCProtocol{
         
     }
     
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
-
+    override var prefersStatusBarHidden: Bool{return true}
 }
 
 

@@ -28,6 +28,7 @@ class SearchViewController: UIViewController, VCProtocol {
         self.searchBar.delegate = self
         self.searchTableView.dataSource = self
         self.searchTableView.delegate = self
+//        self.searchTableView.delegate = sel
         
         self.heightHeader = searchTableView.sectionHeaderHeight/2
         self.heightFooter = searchTableView.sectionFooterHeight/2
@@ -41,6 +42,10 @@ class SearchViewController: UIViewController, VCProtocol {
                      "media.fields":"media_key,type,url"]
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let VC = segue.destination as? SearchDetailViewController else {return}
+        print("prepare@@@@@@@@@@@@@")
+    }
     
     override var prefersStatusBarHidden: Bool{return true}
 }
@@ -48,14 +53,13 @@ class SearchViewController: UIViewController, VCProtocol {
 //MARK: - Custom
 extension SearchViewController{
     
-    
     override func removeAllMy(){}
     @objc func endEditing(){ self.view.endEditing(true)}
         
     func requestImages(){
-        //-is:retweet -is:Quote -is:reply
+        
         let q = "\(self.para!["query"]!)"
-        self.para!["query"] = "(\(q)) has:images"
+        self.para!["query"] = "(\(q)) -is:retweet -is:Quote -is:reply has:images"
         print(self.para!["query"] as Any)
         TwitterAPI.requestGET("https://api.twitter.com/2/tweets/search/recent", self.para) {res in
             guard let recive = res as? OAuthSwiftResponse else {return}
@@ -144,14 +148,8 @@ extension SearchViewController:UISearchBarDelegate{
         }
         let querySent = "\(searchBar.text!)"
         
-        self.para["query"] = "((\(querySent)) OR \(query) OR \(queryTag)"
+        self.para["query"] = "(\(querySent)) OR \(queryTag) OR \(query)"
         self.loadImages()
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.last == " "{
-//            _ = searchBar.text?.popLast()
-//        }
     }
 }
 
@@ -177,10 +175,16 @@ extension SearchViewController:UITableViewDataSource{
             self.moreLoadImages()
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! SearchViewTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! SearchTableViewCell
         cell.photo.image = self.images[sec]
+        cell.photo.contentMode = .scaleAspectFill
+        cell.preVC = self
+        
+        
         return cell
     }
+    
+
 }
 
 extension SearchViewController:UITableViewDelegate{
