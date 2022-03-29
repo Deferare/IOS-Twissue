@@ -28,7 +28,6 @@ class SearchViewController: UIViewController, VCProtocol {
         self.searchBar.delegate = self
         self.searchTableView.dataSource = self
         self.searchTableView.delegate = self
-//        self.searchTableView.delegate = sel
         
         self.heightHeader = searchTableView.sectionHeaderHeight/2
         self.heightFooter = searchTableView.sectionFooterHeight/2
@@ -37,20 +36,15 @@ class SearchViewController: UIViewController, VCProtocol {
         self.searchTableView.addGestureRecognizer(tap)
         
         self.para = ["query":"",
-                     "max_results":10,
+                     "max_results":15,
                      "expansions":"attachments.media_keys",
                      "media.fields":"media_key,type,url"]
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let VC = segue.destination as? SearchDetailViewController else {return}
-        print("prepare@@@@@@@@@@@@@")
     }
     
     override var prefersStatusBarHidden: Bool{return true}
 }
 
-//MARK: - Custom
+//MARK: - Customs
 extension SearchViewController{
     
     override func removeAllMy(){}
@@ -146,9 +140,10 @@ extension SearchViewController:UISearchBarDelegate{
                 queryTag += " OR "
             }
         }
-        let querySent = "\(searchBar.text!)"
-        
-        self.para["query"] = "(\(querySent)) OR \(queryTag) OR \(query)"
+//        let querySent = "\(searchBar.text!)"
+
+//        self.para["query"] = "(\(querySent)) OR \(queryTag) OR \(query)"
+        self.para["query"] = "\(queryTag) OR \(query)"
         self.loadImages()
     }
 }
@@ -177,14 +172,9 @@ extension SearchViewController:UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! SearchTableViewCell
         cell.photo.image = self.images[sec]
-        cell.photo.contentMode = .scaleAspectFill
-        cell.preVC = self
-        
         
         return cell
     }
-    
-
 }
 
 extension SearchViewController:UITableViewDelegate{

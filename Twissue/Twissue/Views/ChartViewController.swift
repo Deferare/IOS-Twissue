@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 
 class ChartViewController: UIViewController, VCProtocol {
+    
     var cnt = 0
     var ref = Database.database().reference()
     var refHandle:Any?
@@ -33,8 +34,10 @@ class ChartViewController: UIViewController, VCProtocol {
     }
 }
 
-extension ChartViewController{
+//MARK: - Customes
+extension ChartViewController:UIScrollViewDelegate{
     override func removeAllMy(){
         
     }
+    
 }

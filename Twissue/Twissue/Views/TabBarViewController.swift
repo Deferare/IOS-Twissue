@@ -26,7 +26,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 }
 
-//MARK: - Custom
+//MARK: - Customs
 extension TabBarViewController{
     func reloadAllChild(){
         for VC in self.children{

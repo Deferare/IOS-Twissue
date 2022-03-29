@@ -48,7 +48,7 @@ class FeedViewController: UIViewController, VCProtocol{
 }
 
 
-//MARK: - Custom
+//MARK: - Customs
 extension FeedViewController{
     
     @objc func loadFeed() {

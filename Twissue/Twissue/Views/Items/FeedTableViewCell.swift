@@ -37,15 +37,18 @@ class FeedTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        if self.summerPhoto != nil{
+            self.summerPhoto?.contentMode = .scaleAspectFill
+        }
     }
 }
 
 extension FeedTableViewCell {
     @objc func touchPhoto(){
-        if self.summerPhoto?.contentMode == .scaleAspectFit{
-            self.summerPhoto?.contentMode = .scaleAspectFill
+        if self.summerPhoto?.contentMode == .scaleAspectFill{
+            self.summerPhoto?.contentMode = .scaleAspectFit
         } else{
-            self.summerPhoto?.contentMode =  .scaleAspectFit
+            self.summerPhoto?.contentMode =  .scaleAspectFill
         }
     }
 }
