@@ -297,8 +297,20 @@
                     <view key="view" contentMode="scaleToFill" id="YBl-Eh-Wzc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="F22-UC-HLG"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="F22-UC-HLG" secondAttribute="top" id="ImP-Zf-OdZ"/>
+                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="F22-UC-HLG" secondAttribute="leading" id="Mug-wo-jGU"/>
+                            <constraint firstItem="F22-UC-HLG" firstAttribute="bottom" secondItem="JqV-C8-gEG" secondAttribute="bottom" id="fba-xn-qbI"/>
+                            <constraint firstItem="F22-UC-HLG" firstAttribute="trailing" secondItem="JqV-C8-gEG" secondAttribute="trailing" id="wX7-vT-9BR"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="wUH-zo-IXo">
                         <imageReference key="image" image="chart.bar.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
@@ -316,10 +328,13 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="pieChartView" destination="JqV-C8-gEG" id="mlN-XD-MRy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9N-NC-33O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1315" y="48"/>
+            <point key="canvasLocation" x="1313.8461538461538" y="47.630331753554501"/>
         </scene>
         <!--Config View Controller-->
         <scene sceneID="H4m-um-tHU">
@@ -493,6 +508,9 @@
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
