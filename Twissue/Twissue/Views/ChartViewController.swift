@@ -10,75 +10,77 @@ import Firebase
 import Charts
 
 class ChartViewController: UIViewController, VCProtocol {
-    @IBOutlet var pieChartView:PieChartView!
+    @IBOutlet var chartTable:UITableView!
     
-    let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
-    let goals = [6, 8, 26, 30, 8, 10]
+    var titles = ["Big tech company","Big tech company","Big tech company"]
     
     
-    var cnt = 0
     var ref = Database.database().reference()
-    var refHandle:Any?
+//    var refHandle:Any?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.chartTable.delegate = self
+        self.chartTable.dataSource = self
         
-        self.refHandle = self.ref.observe(DataEventType.value) { snapshot in
-            let result = snapshot.value as? NSDictionary
-            print(result!)
-        }
-        
-        customizeChart(dataPoints: players, values: goals.map{ Double($0) })
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.ref.child("Test_1").setValue(["name":self.cnt])
-        self.cnt += 1
+    
     }
     
-    override var prefersStatusBarHidden: Bool{return true}
+    override var prefersStatusBarHidden: Bool {return true}
 }
 
-//MARK: - Customes
+
+//MARK: - Customs
 extension ChartViewController{
-    override func removeAllMy(){
-        
-    }
     
-    func customizeChart(dataPoints: [String], values: [Double]) {
-        
-        // 1. Set ChartDataEntry
-        var dataEntries: [ChartDataEntry] = []
-        for i in 0..<dataPoints.count {
-            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
-            dataEntries.append(dataEntry)
-        }
-        
-        // 2. Set ChartDataSet
-        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        
-        // 3. Set ChartData
-        let pieChartData = PieChartData(dataSet: pieChartDataSet)
-        let format = NumberFormatter()
-        format.numberStyle = .none
-        let formatter = DefaultValueFormatter(formatter: format)
-        pieChartData.setValueFormatter(formatter)
-        
-        // 4. Assign it to the chart’s data
-        self.pieChartView.data = pieChartData
-    }
-    
-    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
-        var colors: [UIColor] = []
-        for _ in 0..<numbersOfColor {
-            colors.append(UIColor(red: .random(in: 0.2...0.8),
-                                  green: .random(in: 0.2...0.8),
-                                  blue: .random(in: 0.2...0.8), alpha: 1))
-        }
-        return colors
+    func testInputFirebase(){
+//        self.ref.child("PieChartDatas").child("Big tech company").child("names").setValue(["A", "B", "C"])
+//        self.ref.child("PieChartDatas").child("Big tech company").child("values").setValue([1, 2, 3])
     }
 }
+
+
+
+
+//MARK: - Table
+extension ChartViewController:UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "pieCell") as? ChartTableCell else {return UITableViewCell()}
+        cell.ref = self.ref
+        cell.title = self.titles[indexPath[0]]
+        return cell
+    }
+}
+
+extension ChartViewController:UITableViewDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.titles.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UILabel()
+        headerView.text = self.titles[section]
+        headerView.font = .systemFont(ofSize: 23, weight: .bold)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 35
+    }
+    
+}
+

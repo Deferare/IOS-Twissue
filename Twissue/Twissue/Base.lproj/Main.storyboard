@@ -298,18 +298,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-cA-2WZ">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pieCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49" width="350" height="355.33334350585938"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SdJ-Un-Q2m" id="fXZ-U0-inq">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="355.33334350585938"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-E0-tto">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="355.33333333333331"/>
+                                                    <subviews>
+                                                        <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="355.33333333333331"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="GBe-ZS-3zQ"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="Lbu-Pr-ybv"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5lH-E0-tto" firstAttribute="leading" secondItem="fXZ-U0-inq" secondAttribute="leading" id="Xbr-9L-pv6"/>
+                                                <constraint firstAttribute="trailing" secondItem="5lH-E0-tto" secondAttribute="trailing" id="eO0-7Z-WuQ"/>
+                                                <constraint firstItem="5lH-E0-tto" firstAttribute="top" secondItem="fXZ-U0-inq" secondAttribute="top" id="gPb-jx-Xba"/>
+                                                <constraint firstAttribute="bottom" secondItem="5lH-E0-tto" secondAttribute="bottom" id="wxW-yW-wEJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="pieChartView" destination="JqV-C8-gEG" id="p8B-v8-MaZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="F22-UC-HLG"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="F22-UC-HLG" secondAttribute="top" id="ImP-Zf-OdZ"/>
-                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="F22-UC-HLG" secondAttribute="leading" id="Mug-wo-jGU"/>
-                            <constraint firstItem="F22-UC-HLG" firstAttribute="bottom" secondItem="JqV-C8-gEG" secondAttribute="bottom" id="fba-xn-qbI"/>
-                            <constraint firstItem="F22-UC-HLG" firstAttribute="trailing" secondItem="JqV-C8-gEG" secondAttribute="trailing" id="wX7-vT-9BR"/>
+                            <constraint firstItem="F22-UC-HLG" firstAttribute="bottom" secondItem="FJc-cA-2WZ" secondAttribute="bottom" id="9n1-hG-V6Z"/>
+                            <constraint firstItem="FJc-cA-2WZ" firstAttribute="leading" secondItem="F22-UC-HLG" secondAttribute="leading" id="O4H-vL-W3M"/>
+                            <constraint firstItem="FJc-cA-2WZ" firstAttribute="top" secondItem="YBl-Eh-Wzc" secondAttribute="top" id="aVd-eM-Hak"/>
+                            <constraint firstItem="F22-UC-HLG" firstAttribute="trailing" secondItem="FJc-cA-2WZ" secondAttribute="trailing" id="exe-oc-EbR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="wUH-zo-IXo">
@@ -329,7 +361,7 @@
                         </imageReference>
                     </tabBarItem>
                     <connections>
-                        <outlet property="pieChartView" destination="JqV-C8-gEG" id="mlN-XD-MRy"/>
+                        <outlet property="chartTable" destination="FJc-cA-2WZ" id="ae6-Os-1D8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9N-NC-33O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -508,9 +540,6 @@
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
