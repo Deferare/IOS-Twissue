@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D03F46F27D196310053EA91 /* SigninBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03F46E27D196310053EA91 /* SigninBackgroundViewController.swift */; };
+		5D15D23027F5491E00E08208 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5D15D22F27F5491E00E08208 /* FirebaseAuth */; };
 		5D3B6F0D27C742B700DF92D1 /* ActiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B6F0C27C742B700DF92D1 /* ActiveUser.swift */; };
 		5D4373A327E95F500097C0B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D64320A27B8BE300022536B /* Main.storyboard */; };
 		5D4E30D827B9EF3D001F8E41 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4E30D727B9EF3D001F8E41 /* SigninViewController.swift */; };
@@ -72,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DA9F6B427D5B69400A663DB /* Alamofire in Frameworks */,
+				5D15D23027F5491E00E08208 /* FirebaseAuth in Frameworks */,
 				5DA0FF8227D3241400AB4EE1 /* FirebaseDatabase in Frameworks */,
 				5DE3F0B527CC4B36002E9598 /* OAuthSwift in Frameworks */,
 				5D604FF927F2CF6C0047174D /* Charts in Frameworks */,
@@ -174,6 +176,7 @@
 				5DA0FF8127D3241400AB4EE1 /* FirebaseDatabase */,
 				5DA9F6B327D5B69400A663DB /* Alamofire */,
 				5D604FF827F2CF6C0047174D /* Charts */,
+				5D15D22F27F5491E00E08208 /* FirebaseAuth */,
 			);
 			productName = Twissue;
 			productReference = 5D64320127B8BE300022536B /* Twissue.app */;
@@ -208,6 +211,7 @@
 				5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5DA9F6B227D5B69400A663DB /* XCRemoteSwiftPackageReference "Alamofire" */,
 				5D604FF727F2CF6C0047174D /* XCRemoteSwiftPackageReference "Charts" */,
+				5D15D22E27F5491E00E08208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 5D64320227B8BE300022536B /* Products */;
 			projectDirPath = "";
@@ -484,6 +488,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5D15D22E27F5491E00E08208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		5D604FF727F2CF6C0047174D /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -519,6 +531,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5D15D22F27F5491E00E08208 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5DA0FF8027D3241400AB4EE1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		5D604FF827F2CF6C0047174D /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5D604FF727F2CF6C0047174D /* XCRemoteSwiftPackageReference "Charts" */;

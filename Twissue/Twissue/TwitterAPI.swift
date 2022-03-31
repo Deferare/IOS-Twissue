@@ -10,24 +10,23 @@ import UIKit
 import OAuthSwift
 
 
-
 class TwitterAPI{
     static var myClient = OAuth1Swift(consumerKey: "zaLqWt4BY5UWpfpMkpbA0skkv", consumerSecret: "KnisKRASciAnN7HDKMyAYSsrUri8iGRfGet6aJMvE2wiFmP4lz", requestTokenUrl: "https://api.twitter.com/oauth/request_token", authorizeUrl: "https://api.twitter.com/oauth/authorize", accessTokenUrl: "https://api.twitter.com/oauth/access_token")
 }
 
+
 extension TwitterAPI{
     
     static func login(_ complete: @escaping (_ credential:OAuthSwiftCredential?,_ response:OAuthSwiftResponse?,_ parameters:OAuthSwift.Parameters?) -> ()) {
-        TwitterAPI.myClient.authorize(
-            withCallbackURL: "twissue://") { result in
-                switch result {
-                case .success(let (credential, response, parameters)):
-                    complete(credential, response, parameters)
-                case .failure(let error):
-                  print(error.localizedDescription)
-                    complete(nil, nil, nil)
-                }
+        TwitterAPI.myClient.authorize(withCallbackURL: "twissue://") { result in
+            switch result {
+            case .success(let (credential, response, parameters)):
+                complete(credential, response, parameters)
+            case .failure(let error):
+                print(error.localizedDescription)
+                complete(nil, nil, nil)
             }
+        }
     }
     
     
@@ -42,7 +41,6 @@ extension TwitterAPI{
             }
         }
     }
-    
 }
 
 

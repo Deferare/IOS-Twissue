@@ -7,11 +7,12 @@
 
 import UIKit
 import OAuthSwift
-
+import FirebaseAuth
 
 //MARK: - Circle
 class SigninViewController: UIViewController {
     var signBackCV:SigninBackgroundViewController!
+    let provider = OAuthProvider(providerID: "twitter.com")
     
     @IBOutlet var loginBtn:UIButton!
     
@@ -25,7 +26,6 @@ class SigninViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.signBackCV.signinCheck()
     }
     
     override var prefersStatusBarHidden: Bool{
@@ -37,26 +37,19 @@ class SigninViewController: UIViewController {
 //MARK: - Custom
 extension SigninViewController{
     @IBAction func loginBtnAction(_ sender:UIButton){
-        TwitterAPI.login(){ credention, response, parameters in
-            
-            guard let parameters = parameters else {return}
-            UserDefaults.standard.setValue(parameters["oauth_token"], forKey: "oauthToken")
-            UserDefaults.standard.setValue(parameters["oauth_token_secret"], forKey: "oauthTokenSecret")
-            UserDefaults.standard.setValue(parameters["user_id"], forKey: "userId")
-            self.getFollowingIds()
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func getFollowingIds(){
-        let para:[String : Any] = [:]
-        TwitterAPI.requestGET("https://api.twitter.com/1.1/friends/ids.json", para) { res in
-            guard let res = res as? OAuthSwiftResponse else {return}
-            do {
-                if let result = try res.jsonObject() as? NSDictionary {
-                    UserDefaults.standard.setValue(result["ids"]!, forKey: "followingIds")
+        self.provider.getCredentialWith(nil) { credential, error in
+            if error != nil {print(error!)}
+            if credential != nil {
+                Auth.auth().signIn(with: credential!) { authResult, error in
+                    if error != nil {print(error as Any)}
+                    if let credent = authResult?.credential as? OAuthCredential{
+                        UserDefaults.standard.setValue(credent.accessToken!, forKey: "oauthToken")
+                        UserDefaults.standard.setValue(credent.secret!, forKey: "oauthTokenSecret")
+                        self.dismiss(animated: true, completion: nil)
+                        self.signBackCV.signinCheck()
+                    }
                 }
-            } catch {print("getIds Err.")}
+            }
         }
     }
 }

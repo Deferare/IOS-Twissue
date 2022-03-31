@@ -9,6 +9,8 @@ import UIKit
 import OAuthSwift
 import Alamofire
 
+
+//MARK: - Circle
 class SearchViewController: UIViewController, VCProtocol {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var searchTableView:UITableView!

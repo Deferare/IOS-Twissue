@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+//MARK: - Circle
 class SearchTableViewCell: UITableViewCell {
     @IBOutlet var photo:UIImageView!
     

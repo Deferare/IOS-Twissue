@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
+//MARK: - Circle
 class SigninBackgroundViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -26,21 +28,36 @@ class SigninBackgroundViewController: UIViewController {
         }
     }
     
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
+    override var prefersStatusBarHidden: Bool{return true}
 }
 
+
+//MARK: - Customs
 extension SigninBackgroundViewController{
     func signinCheck(){
-        if UserDefaults.standard.value(forKey: "userId") != nil{
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "SBtoSignin", sender: nil)
+        } else {
+            if UserDefaults.standard.value(forKey: "oauthToken") == nil || UserDefaults.standard.value(forKey: "oauthTokenSecret") == nil{
+                print("ERRRRRR Caough!!!")
+                do {
+                    try Auth.auth().signOut()
+                    for key in UserDefaults.standard.dictionaryRepresentation().keys {
+                        UserDefaults.standard.removeObject(forKey: key.string)
+                    }
+                } catch let signOutError as NSError {
+                    print(signOutError)
+                }
+                self.signinCheck()
+                return
+            }
+
             TwitterAPI.myClient.client.credential.oauthToken = UserDefaults.standard.value(forKey: "oauthToken") as! String
             TwitterAPI.myClient.client.credential.oauthTokenSecret = UserDefaults.standard.value(forKey: "oauthTokenSecret") as! String
             let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "EntryTab")
             tabVC?.modalPresentationStyle = .fullScreen
             self.present(tabVC!, animated: true, completion: nil)
-        } else{
-            self.performSegue(withIdentifier: "SBtoSignin", sender: nil)
+    
         }
     }
 }
