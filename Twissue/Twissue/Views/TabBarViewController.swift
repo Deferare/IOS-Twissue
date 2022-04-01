@@ -61,6 +61,12 @@ extension TabBarViewController{
                 VC.searchTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             }
             VC.barToggle()
+        }else if index == 2{
+            guard let VC = viewController as? ChartViewController else{return}
+            if index == self.preSelected{
+                let indexPath = IndexPath(row: 0, section: 0)
+                VC.chartTable.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
         }
         
         self.preSelected = index

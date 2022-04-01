@@ -14,6 +14,8 @@ import Charts
 class ChartViewController: UIViewController, VCProtocol {
     @IBOutlet var chartTable:UITableView!
     
+    
+    
     var titles = ["Big tech company","Big tech company","Big tech company"]
     
     
@@ -58,7 +60,7 @@ extension ChartViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "pieCell") as? ChartTableCell else {return UITableViewCell()}
         cell.ref = self.ref
-        cell.title = self.titles[indexPath[0]]
+//        cell.title = self.titles[indexPath[0]]
         return cell
     }
 }

@@ -4,9 +4,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -301,19 +303,53 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-cA-2WZ">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pieCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="350" height="355.33334350585938"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pieCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49" width="350" height="350.33334350585938"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SdJ-Un-Q2m" id="fXZ-U0-inq">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="355.33334350585938"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350.33334350585938"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-E0-tto">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="355.33333333333331"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
                                                     <subviews>
-                                                        <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="355.33333333333331"/>
-                                                        </view>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="tds-07-acd">
+                                                                <size key="itemSize" width="332" height="325"/>
+                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            </collectionViewFlowLayout>
+                                                            <cells>
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
+                                                                    <rect key="frame" x="8" y="12" width="332" height="325"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NvS-cG-Rnr">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <subviews>
+                                                                            <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
+                                                                                <color key="backgroundColor" name="AccentColor"/>
+                                                                            </view>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="NvS-cG-Rnr" secondAttribute="leading" id="1vr-ai-3uP"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="JqV-C8-gEG" secondAttribute="bottom" id="CdO-9c-ZJD"/>
+                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="NvS-cG-Rnr" secondAttribute="top" id="Nvw-Gt-Wgi"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="JqV-C8-gEG" secondAttribute="trailing" id="Srw-z0-z6H"/>
+                                                                        </constraints>
+                                                                    </collectionViewCellContentView>
+                                                                    <size key="customSize" width="332" height="325"/>
+                                                                    <connections>
+                                                                        <outlet property="pieChartView" destination="JqV-C8-gEG" id="Dhx-zJ-erI"/>
+                                                                    </connections>
+                                                                </collectionViewCell>
+                                                            </cells>
+                                                        </collectionView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="GBe-ZS-3zQ"/>
@@ -329,7 +365,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="pieChartView" destination="JqV-C8-gEG" id="p8B-v8-MaZ"/>
+                                            <outlet property="collectionView" destination="gKz-Jf-QPx" id="k3X-kz-Maf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -535,11 +571,17 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.stack.3d.down.forward" catalog="system" width="124" height="128"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="128" height="124"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
