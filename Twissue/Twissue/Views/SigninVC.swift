@@ -10,8 +10,8 @@ import OAuthSwift
 import FirebaseAuth
 
 //MARK: - Circle
-class SigninViewController: UIViewController {
-    var signBackCV:SigninBackgroundViewController!
+class SigninVC: UIViewController {
+    var signBackCV:SigninBackgroundVC!
     let provider = OAuthProvider(providerID: "twitter.com")
     
     @IBOutlet var loginBtn:UIButton!
@@ -35,7 +35,7 @@ class SigninViewController: UIViewController {
 
 
 //MARK: - Custom
-extension SigninViewController{
+extension SigninVC{
     @IBAction func loginBtnAction(_ sender:UIButton){
         self.provider.getCredentialWith(nil) { credential, error in
             if error != nil {print(error!)}

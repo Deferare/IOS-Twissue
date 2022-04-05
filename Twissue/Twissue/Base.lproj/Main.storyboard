@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Feed View Controller-->
+        <!--FeedVC-->
         <scene sceneID="N3F-aT-Kf6">
             <objects>
-                <viewController id="mkl-xT-gkq" customClass="FeedViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mkl-xT-gkq" customClass="FeedVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7is-cP-aFG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="-300" y="47.630331753554501"/>
         </scene>
-        <!--Search View Controller-->
+        <!--SearchVC-->
         <scene sceneID="jOK-ig-gfl">
             <objects>
-                <viewController id="BDM-Ij-a2G" customClass="SearchViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BDM-Ij-a2G" customClass="SearchVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mNw-l4-1gm">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -292,10 +292,10 @@
             </objects>
             <point key="canvasLocation" x="513.84615384615381" y="47.630331753554501"/>
         </scene>
-        <!--Chart View Controller-->
+        <!--ChartVC-->
         <scene sceneID="mQz-Kb-XhD">
             <objects>
-                <viewController id="wXp-Ow-dMf" customClass="ChartViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wXp-Ow-dMf" customClass="ChartVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YBl-Eh-Wzc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -303,7 +303,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-cA-2WZ">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pieCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChartCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="350" height="350.33334350585938"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SdJ-Un-Q2m" id="fXZ-U0-inq">
@@ -314,7 +314,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="tds-07-acd">
@@ -325,7 +325,7 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
-                                                                    <rect key="frame" x="8" y="12" width="332" height="325"/>
+                                                                    <rect key="frame" x="8" y="12.666666666666666" width="332" height="325"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NvS-cG-Rnr">
                                                                         <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
@@ -404,10 +404,10 @@
             </objects>
             <point key="canvasLocation" x="1313.8461538461538" y="47.630331753554501"/>
         </scene>
-        <!--Config View Controller-->
+        <!--ConfigVC-->
         <scene sceneID="H4m-um-tHU">
             <objects>
-                <viewController id="4Uf-5t-LjA" customClass="ConfigViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Uf-5t-LjA" customClass="ConfigVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W9t-VD-52n">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -449,10 +449,10 @@
             </objects>
             <point key="canvasLocation" x="2083" y="48"/>
         </scene>
-        <!--Signin Background View Controller-->
+        <!--Signin BackgroundVC-->
         <scene sceneID="g6O-Ed-cs9">
             <objects>
-                <viewController storyboardIdentifier="SigninB" id="9tW-RX-P3k" customClass="SigninBackgroundViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninB" id="9tW-RX-P3k" customClass="SigninBackgroundVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rJB-r1-gH5">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,10 +467,10 @@
             </objects>
             <point key="canvasLocation" x="-1218" y="-791"/>
         </scene>
-        <!--Signin View Controller-->
+        <!--SigninVC-->
         <scene sceneID="7cj-NC-Asg">
             <objects>
-                <viewController storyboardIdentifier="loginView" id="01m-yV-Dxb" customClass="SigninViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" id="01m-yV-Dxb" customClass="SigninVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ArE-Qr-9GK">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -536,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="-60" y="-791"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--Tab BarVC-->
         <scene sceneID="JaQ-5J-XFd">
             <objects>
-                <tabBarController storyboardIdentifier="EntryTab" automaticallyAdjustsScrollViewInsets="NO" id="IXh-Zs-LBU" customClass="TabBarViewController" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="EntryTab" automaticallyAdjustsScrollViewInsets="NO" id="IXh-Zs-LBU" customClass="TabBarVC" customModule="Twissue" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="f6h-MZ-xT0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="Xe7-ER-vzS">

@@ -10,7 +10,7 @@ import OAuthSwift
 import Alamofire
 
 //MARK: - Circle
-class FeedViewController: UIViewController, VCProtocol{
+class FeedVC: UIViewController, VCProtocol{
     
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
@@ -49,7 +49,7 @@ class FeedViewController: UIViewController, VCProtocol{
 
 
 //MARK: - Customs
-extension FeedViewController{
+extension FeedVC{
     
     @objc func loadFeed() {
         let para:[String : Any] = ["count":200,
@@ -131,7 +131,7 @@ extension FeedViewController{
 
 
 //MARK: - Table
-extension FeedViewController:UITableViewDataSource{
+extension FeedVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -154,7 +154,7 @@ extension FeedViewController:UITableViewDataSource{
     }
 }
 
-extension FeedViewController:UITableViewDelegate{
+extension FeedVC:UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.tweets.count

@@ -10,7 +10,7 @@ import FirebaseAuth
 
 
 //MARK: - Circle
-class ConfigViewController: UIViewController, VCProtocol {
+class ConfigVC: UIViewController, VCProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ConfigViewController: UIViewController, VCProtocol {
 
 
 //MARK: - Custom
-extension ConfigViewController {
+extension ConfigVC {
     override func removeAllMy() {}
         
     @IBAction func signOutBtn(_ sender:UIButton){

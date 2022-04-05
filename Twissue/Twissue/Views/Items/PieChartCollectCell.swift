@@ -6,46 +6,39 @@
 //
 
 import UIKit
-import Firebase
 import Charts
 
 
 class PieChartCollectCell: UICollectionViewCell {
     @IBOutlet var pieChartView:PieChartView!
     
-    var title:String = "Big tech company"
-    var names = [String]()
-    var values = [Int]()
-    
-    var ref = Database.database().reference()
-    var refHandle:Any?
+    var titles = ["", ""]
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.drawChart()
+        FireData.childViews.append(self)
     }
-
 }
 
 //MARK: - Customes
 extension PieChartCollectCell{
     func drawChart(){
-        self.refHandle = self.ref.observe(DataEventType.value) { snapshot in
-            let result = snapshot.value as? NSDictionary
-            
-            if let names = result!["PieChartDatas"] as? NSDictionary{
-                if let names2 = names[self.title] as? NSDictionary{
+        DispatchQueue.main.async {
+            var viewNames = [String]()
+            var viewValues = [Int]()
+            if let names = FireData.datas[self.titles[0]] as? NSDictionary{
+                if let names2 = names[self.titles[1]] as? NSDictionary{
                     if let names3 = names2["names"] as? Array<String>{
-                        self.names = names3
+                        viewNames = names3
                     }
                     if let names3 = names2["values"] as? Array<Int>{
-                        self.values = names3
+                        viewValues = names3
                     }
                 }
             }
-            print(self.names)
-            print(self.values)
-            self.customizeChart(dataPoints: self.names, values: self.values.map{ Double($0) })
+            self.customizeChart(dataPoints: viewNames, values: viewValues.map{ Double($0) })
         }
     }
     
@@ -73,7 +66,8 @@ extension PieChartCollectCell{
         // 4. Assign it to the chart’s data
         self.pieChartView.data = pieChartData
         self.pieChartView.legend.enabled = false
-        self.pieChartView.centerText = self.title
+        self.pieChartView.centerText = self.titles[1]
+        self.pieChartView.holeColor = .none
     }
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {

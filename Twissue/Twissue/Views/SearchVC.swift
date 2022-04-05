@@ -11,7 +11,7 @@ import Alamofire
 
 
 //MARK: - Circle
-class SearchViewController: UIViewController, VCProtocol {
+class SearchVC: UIViewController, VCProtocol {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var searchTableView:UITableView!
     @IBOutlet var noData:UILabel!
@@ -47,7 +47,7 @@ class SearchViewController: UIViewController, VCProtocol {
 }
 
 //MARK: - Customs
-extension SearchViewController{
+extension SearchVC{
     
     override func removeAllMy(){}
     @objc func endEditing(){ self.view.endEditing(true)}
@@ -107,7 +107,7 @@ extension SearchViewController{
 
 
 //MARK: - SearchBar
-extension SearchViewController:UISearchBarDelegate{
+extension SearchVC:UISearchBarDelegate{
     @objc func barToggle(){
         var newConst:CGFloat = 95.0
         var newAlpha:CGFloat = 1.0
@@ -152,7 +152,7 @@ extension SearchViewController:UISearchBarDelegate{
 
 
 //MARK: - TableView
-extension SearchViewController:UITableViewDataSource{
+extension SearchVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -179,7 +179,7 @@ extension SearchViewController:UITableViewDataSource{
     }
 }
 
-extension SearchViewController:UITableViewDelegate{
+extension SearchVC:UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.images.count

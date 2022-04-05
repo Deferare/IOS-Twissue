@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 //MARK: - Circle
-class SigninBackgroundViewController: UIViewController {
+class SigninBackgroundVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class SigninBackgroundViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let siginCV = segue.destination as? SigninViewController{
+        if let siginCV = segue.destination as? SigninVC{
             siginCV.signBackCV = self
         }
     }
@@ -33,7 +33,7 @@ class SigninBackgroundViewController: UIViewController {
 
 
 //MARK: - Customs
-extension SigninBackgroundViewController{
+extension SigninBackgroundVC{
     func signinCheck(){
         if Auth.auth().currentUser == nil {
             self.performSegue(withIdentifier: "SBtoSignin", sender: nil)
