@@ -14,7 +14,6 @@ class PieChartCollectCell: UICollectionViewCell {
     
     var titles = ["", ""]
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.drawChart()
@@ -42,12 +41,11 @@ extension PieChartCollectCell{
         }
     }
     
-    
     func customizeChart(dataPoints: [String], values: [Double]) {
         // 1. Set ChartDataEntry
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<dataPoints.count {
-            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+            let dataEntry = PieChartDataEntry(value: values[i]/10, label: dataPoints[i], data: dataPoints[i] as AnyObject)
             dataEntries.append(dataEntry)
         }
         
@@ -59,28 +57,28 @@ extension PieChartCollectCell{
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
     
         let format = NumberFormatter()
-        format.numberStyle = .percent
+        format.numberStyle = .decimal
+
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         
         // 4. Assign it to the chart’s data
         self.pieChartView.data = pieChartData
         self.pieChartView.legend.enabled = false
-        self.pieChartView.centerText = self.titles[1]
+        self.pieChartView.centerText = self.titles[1] + " (%)"
         self.pieChartView.holeColor = .none
     }
     
+
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []
-        
-        for _ in 0..<numbersOfColor {
-            let r = Double.random(in: 100...230)
-            let g = Double.random(in: 100...230)
-            let b = Double.random(in: 100...230)
-
+        let r = Double.random(in: 75...190)
+        let g = Double.random(in: 75...190)
+        let b = Double.random(in: 75...190)
+        for i in 1..<numbersOfColor+1 {
             let color = UIColor(red: CGFloat(r/255),
                                 green: CGFloat(g/255),
-                                blue: CGFloat(b/255), alpha: 1)
+                                blue: CGFloat(b/255), alpha: 1.1-(CGFloat(i)/10))
             colors.append(color)
         }
         return colors

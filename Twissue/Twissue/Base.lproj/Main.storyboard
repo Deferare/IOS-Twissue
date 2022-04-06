@@ -313,9 +313,9 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-E0-tto">
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
                                                     <subviews>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
+                                                        <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
                                                             <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="tds-07-acd">
                                                                 <size key="itemSize" width="332" height="325"/>
@@ -324,10 +324,10 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
                                                                     <rect key="frame" x="8" y="12.666666666666666" width="332" height="325"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NvS-cG-Rnr">
+                                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ze8-Vu-3b4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
@@ -337,13 +337,12 @@
                                                                             </view>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="NvS-cG-Rnr" secondAttribute="leading" id="1vr-ai-3uP"/>
+                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="ze8-Vu-3b4" secondAttribute="leading" id="1vr-ai-3uP"/>
                                                                             <constraint firstAttribute="bottom" secondItem="JqV-C8-gEG" secondAttribute="bottom" id="CdO-9c-ZJD"/>
-                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="NvS-cG-Rnr" secondAttribute="top" id="Nvw-Gt-Wgi"/>
+                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="ze8-Vu-3b4" secondAttribute="top" id="Nvw-Gt-Wgi"/>
                                                                             <constraint firstAttribute="trailing" secondItem="JqV-C8-gEG" secondAttribute="trailing" id="Srw-z0-z6H"/>
                                                                         </constraints>
                                                                     </collectionViewCellContentView>
-                                                                    <size key="customSize" width="332" height="325"/>
                                                                     <connections>
                                                                         <outlet property="pieChartView" destination="JqV-C8-gEG" id="Dhx-zJ-erI"/>
                                                                     </connections>
