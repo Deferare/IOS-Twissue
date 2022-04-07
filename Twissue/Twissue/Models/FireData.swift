@@ -7,17 +7,13 @@
 
 import Foundation
 import Firebase
-
-
+import UIKit
 
 class FireData{
     static var childViews = [PieChartCollectCell]()
-    static let kinds = ["7 Days tweet","PieChartDatas"]
-    static let keys = ["7 Days tweet":["Big tech", "Big tech", "Big tech"],
-                       "PieChartDatas":["Big tech company", "Big tech company"]]
-    
+    static let kinds = ["7 Days tweet"]
+    static let keys = ["7 Days tweet":["Big tech", "Countries", "UK vs RS", "Food"]]
     static var datas = Dictionary<String, Any>()
-    
     let ref = Database.database().reference()
     var refHandle:Any?
     
@@ -31,6 +27,7 @@ class FireData{
                 }
                 
                 // View Update.
+                ChartTableCell.pieChartDatas.removeAll()
                 for view in FireData.childViews{
                     view.drawChart()
                 }

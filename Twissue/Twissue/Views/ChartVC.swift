@@ -11,18 +11,15 @@ import UIKit
 //MARK: - Circle
 class ChartVC: UIViewController, VCProtocol {
     @IBOutlet var chartTable:UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.chartTable.delegate = self
         self.chartTable.dataSource = self
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
     }
     
     override var prefersStatusBarHidden: Bool {return true}

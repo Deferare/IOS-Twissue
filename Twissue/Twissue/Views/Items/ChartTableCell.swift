@@ -6,12 +6,12 @@
 //
 
 import UIKit
-
+import Charts
 
 //MARK: - Circle
 class ChartTableCell: UITableViewCell {
     @IBOutlet var collectionView:UICollectionView!
-    
+    static var pieChartDatas = Dictionary<String, PieChartData>()
     var title:String!
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ extension ChartTableCell: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = PieChartCollectCell()
-        if self.title == "7 Days tweet" || self.title == "PieChartDatas"{
+        if self.title == "7 Days tweet"{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PieCollecCell", for: indexPath) as! PieChartCollectCell
             cell.titles[0] = self.title!
             cell.titles[1] = FireData.keys[self.title]![indexPath.row]

@@ -50,7 +50,6 @@ class FeedVC: UIViewController, VCProtocol{
 
 //MARK: - Customs
 extension FeedVC{
-    
     @objc func loadFeed() {
         let para:[String : Any] = ["count":200,
                                    "exclude_replies":true,
