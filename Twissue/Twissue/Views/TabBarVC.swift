@@ -18,7 +18,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         
-        FireData()
+        let _ = FireData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -18,10 +18,8 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet var createAt:UILabel!
     @IBOutlet var summer:UILabel!
     @IBOutlet var summerPhoto:UIImageView?
-    @IBOutlet var commentBtn:UIButton!
     @IBOutlet var favoriteBtn:UIButton!
     @IBOutlet var retweetBtn:UIButton!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +28,6 @@ class FeedTableViewCell: UITableViewCell {
         self.profilePhoto.clipsToBounds = true
         self.profilePhoto.translatesAutoresizingMaskIntoConstraints = false
         self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.touchPhoto))
         self.summerPhoto?.addGestureRecognizer(tap)
     }

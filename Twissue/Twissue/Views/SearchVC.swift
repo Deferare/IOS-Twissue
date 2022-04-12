@@ -25,6 +25,8 @@ class SearchVC: UIViewController, VCProtocol {
     var nextToken = ""
     var para:Dictionary<String, Any>!
     
+    let banLetters:Set<String> = ["@", "#", "/", " ", "%", "^", "&", "*", "(", ")", "[", "]", ";", "<", ">", "~", "`", "'", "\""]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchBar.delegate = self
@@ -128,23 +130,21 @@ extension SearchVC:UISearchBarDelegate{
         }.startAnimation()
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 1 && self.banLetters.contains(searchText) == false{
+            self.searchBar.text? = "#"+searchText
+        }
+        else if searchText.count != 0 && self.banLetters.contains(String(searchText.last!)){
+            self.searchBar.text?.removeLast()
+        }
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.barToggle()
         self.nextToken = ""
-        let q = searchBar.text?.split(separator: " ")
-        var query = ""
-        var queryTag = ""
-        for i in 0..<q!.count{
-            query += "\(q![i])"
-            queryTag += "#\(q![i])"
-            if i != q!.count - 1{
-                query += " OR "
-                queryTag += " OR "
-            }
-        }
-//        let querySent = "\(searchBar.text!)"
-
-//        self.para["query"] = "(\(querySent)) OR \(queryTag) OR \(query)"
+        var query = searchBar.text!
+        query.removeFirst()
+        let queryTag = "\(searchBar.text!)"
         self.para["query"] = "\(queryTag) OR \(query)"
         self.loadImages()
     }

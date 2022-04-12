@@ -24,14 +24,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" id="K0L-kx-lHG" customClass="FeedTableViewCell" customModule="Twissue" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="350" height="228.33332824707031"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="229.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K0L-kx-lHG" id="cai-Pv-Zqd">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="228.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="229.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="44u-BO-SQ5">
-                                                    <rect key="frame" x="10" y="10" width="330" height="208.33333333333334"/>
+                                                    <rect key="frame" x="10" y="10" width="330" height="209.33333333333334"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zDx-k6-ZjG">
                                                             <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="50.333333333333336"/>
@@ -82,34 +82,37 @@
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="450" id="1cO-6n-idz"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-WY-awc">
-                                                            <rect key="frame" x="0.0" y="178.66666666666666" width="330" height="29.666666666666657"/>
+                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-WY-awc">
+                                                            <rect key="frame" x="0.0" y="178.66666666666666" width="330" height="30.666666666666657"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dU8-mh-0MW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="110" height="29.666666666666668"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="30.666666666666668"/>
                                                                     <color key="tintColor" systemColor="labelColor"/>
                                                                     <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" subtitle="16">
-                                                                        <imageReference key="image" image="message" catalog="system" symbolScale="large"/>
-                                                                        <fontDescription key="subtitleFontDescription" type="system" pointSize="13"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" imagePadding="2">
+                                                                        <attributedString key="attributedTitle">
+                                                                            <fragment content="0">
+                                                                                <attributes>
+                                                                                    <font key="NSFont" metaFont="toolTip"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                     </buttonConfiguration>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
-                                                                    <rect key="frame" x="110" y="0.0" width="110" height="29.666666666666668"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
+                                                                    <rect key="frame" x="170" y="0.0" width="160" height="30.666666666666668"/>
                                                                     <color key="tintColor" systemColor="labelColor"/>
                                                                     <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" title="" subtitle="21">
-                                                                        <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
-                                                                        <fontDescription key="subtitleFontDescription" type="system" pointSize="13"/>
-                                                                    </buttonConfiguration>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
-                                                                    <rect key="frame" x="220" y="0.0" width="110" height="29.666666666666668"/>
-                                                                    <color key="tintColor" systemColor="labelColor"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" subtitle="9">
-                                                                        <imageReference key="image" image="arrow.2.squarepath" catalog="system" symbolScale="large"/>
-                                                                        <fontDescription key="subtitleFontDescription" type="system" pointSize="13"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.2.squarepath" catalog="system" imagePadding="2">
+                                                                        <attributedString key="attributedTitle">
+                                                                            <fragment content="0">
+                                                                                <attributes>
+                                                                                    <font key="NSFont" metaFont="toolTip"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
                                                                     </buttonConfiguration>
                                                                 </button>
                                                             </subviews>
@@ -137,7 +140,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="commentBtn" destination="dU8-mh-0MW" id="dbb-hl-syh"/>
                                             <outlet property="createAt" destination="9Qh-cx-aI3" id="eck-Io-Nqj"/>
                                             <outlet property="favoriteBtn" destination="KJH-59-ejn" id="hLh-e4-nBd"/>
                                             <outlet property="name" destination="fQf-vI-v5c" id="RjB-Eh-zp3"/>
@@ -193,7 +195,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar clipsSubviews="YES" alpha="0.0" contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXz-j2-Znr">
+                            <searchBar clipsSubviews="YES" alpha="0.0" contentMode="redraw" searchBarStyle="minimal" placeholder="#HashTag" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXz-j2-Znr">
                                 <rect key="frame" x="10" y="-51" width="370" height="51"/>
                                 <color key="barTintColor" systemColor="systemGroupedBackgroundColor"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -565,7 +567,6 @@
         <image name="chart.bar.fill" catalog="system" width="128" height="92"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="message" catalog="system" width="128" height="113"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.stack.3d.down.forward" catalog="system" width="124" height="128"/>

@@ -51,7 +51,7 @@ class FeedVC: UIViewController, VCProtocol{
 //MARK: - Customs
 extension FeedVC{
     @objc func loadFeed() {
-        let para:[String : Any] = ["count":200,
+        let para:[String : Any] = ["count":50,
                                    "exclude_replies":true,
                                    "include_rts":0]
         TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
@@ -86,7 +86,7 @@ extension FeedVC{
 
     }
     
-    func moreLoadFeed(){
+    func loadFeedMore(){
         let para:[String : Any] = ["count":200,
                                    "exclude_replies":true,
                                    "include_rts":0]
@@ -122,6 +122,12 @@ extension FeedVC{
         }
     }
     
+    func dateFormatter(_ str:String) -> String {
+        let str = str.split(separator: " ")
+        let answer = "\(str[0]) \(str[2]) • \(str[3])"
+        return answer
+    }
+    
     override func removeAllMy(){
         self.tweets.removeAll()
     }
@@ -140,15 +146,21 @@ extension FeedVC:UITableViewDataSource{
         let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as! FeedTableViewCell
         cell.profilePhoto.image = self.tweets[indexPath.section].profileImage
         cell.name.text = self.tweets[indexPath.section].user.name
-        cell.createAt.text = self.tweets[indexPath.section].createdAt
+        cell.createAt.text = self.dateFormatter(self.tweets[indexPath.section].createdAt)
         cell.summer.text = self.tweets[indexPath.section].text
-        cell.commentBtn.subtitleLabel?.text = "0"
         if cell.summerPhoto != nil{
             cell.summerPhoto!.image = self.tweets[indexPath.section].mediaPhoto
         }
         
-        cell.favoriteBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].favoriteCount)
-        cell.retweetBtn.subtitleLabel?.text = String(self.tweets[indexPath.section].retweetCount)
+        // Set up Button.
+        let fav = String(self.tweets[indexPath.section].favoriteCount)
+        let ret = String(self.tweets[indexPath.section].retweetCount)
+        let favorText = NSMutableAttributedString(string: fav)
+        let retText = NSMutableAttributedString(string: ret)
+        favorText.addAttribute(.font, value: UIFont.systemFont(ofSize: CGFloat(13)), range: NSRange.init(location: 0, length: fav.count))
+        retText.addAttribute(.font, value: UIFont.systemFont(ofSize: CGFloat(13)), range: NSRange.init(location: 0, length: ret.count))
+        cell.favoriteBtn.setAttributedTitle(favorText, for: .normal)
+        cell.retweetBtn.setAttributedTitle(retText, for: .normal)
         return cell
     }
 }
@@ -169,7 +181,7 @@ extension FeedVC:UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section+3 > self.tweets.count{
-            self.moreLoadFeed()
+            self.loadFeedMore()
         }
     }
 }
