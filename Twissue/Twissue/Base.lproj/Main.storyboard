@@ -99,6 +99,9 @@
                                                                             </fragment>
                                                                         </attributedString>
                                                                     </buttonConfiguration>
+                                                                    <connections>
+                                                                        <action selector="likeOrUnLikeTweet:" destination="K0L-kx-lHG" eventType="touchUpInside" id="kkH-Gf-FOj"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
                                                                     <rect key="frame" x="170" y="0.0" width="160" height="30.666666666666668"/>
@@ -114,6 +117,9 @@
                                                                             </fragment>
                                                                         </attributedString>
                                                                     </buttonConfiguration>
+                                                                    <connections>
+                                                                        <action selector="likeOrUnLikeTweet:" destination="K0L-kx-lHG" eventType="touchUpInside" id="2Sp-wG-sml"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -316,7 +322,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
                                                     <subviews>
                                                         <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="tds-07-acd">
@@ -327,7 +333,7 @@
                                                             </collectionViewFlowLayout>
                                                             <cells>
                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
-                                                                    <rect key="frame" x="8" y="12.666666666666666" width="332" height="325"/>
+                                                                    <rect key="frame" x="8" y="12" width="332" height="325"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ze8-Vu-3b4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>

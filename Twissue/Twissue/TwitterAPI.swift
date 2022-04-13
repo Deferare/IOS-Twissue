@@ -41,16 +41,32 @@ extension TwitterAPI{
             }
         }
     }
+    
+    static func requestLikeUnLike(_ likeCheck:Bool, tweetId: String,_ complete: @escaping (Any, Bool) -> ()){
+        let endPoine = "https://api.twitter.com/2/users/1426591113641484297/likes"
+        if likeCheck{
+            TwitterAPI.myClient.client.request(endPoine+"/\(tweetId)", method: .DELETE){ res in
+                switch res {
+                case .success(let response):
+                    complete(response, !likeCheck)
+
+                case .failure(let err):
+                    complete(err, likeCheck)
+                }
+            }
+        } else{
+            var header = OAuth1Swift.Headers()
+            header["Content-type"] = "application/json"
+            let body = Data("{\"tweet_id\":\"\(tweetId)\"}".data(using: .ascii)!)
+            TwitterAPI.myClient.client.request(endPoine, method: .POST, headers: header,body: body){ res in
+                switch res {
+                case .success(let response):
+                    complete(response, !likeCheck)
+
+                case .failure(let err):
+                    complete(err, likeCheck)
+                }
+            }
+        }
+    }
 }
-
-
-//func requestTest(){
-//    TwitterAPI.myClient.client.request("https://api.twitter.com/2/tweets/1497855318713257987", method: .GET) {res in
-//        switch res {
-//        case .success(let response):
-//            print(response.string)
-//        case .failure(let err):
-//            print(err.localizedDescription)
-//        }
-//    }
-//}

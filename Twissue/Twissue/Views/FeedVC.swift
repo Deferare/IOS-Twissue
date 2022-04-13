@@ -11,23 +11,19 @@ import Alamofire
 
 //MARK: - Circle
 class FeedVC: UIViewController, VCProtocol{
-    
+    @IBOutlet weak var feedTableView:UITableView!
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
     var tweets = [Tweet]()
-    
     let refresh = UIRefreshControl()
     let notifiGenerator = UINotificationFeedbackGenerator()
-    
-    @IBOutlet weak var feedTableView:UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.feedTableView.dataSource = self
         self.feedTableView.delegate = self
         self.heightHeader = self.feedTableView.sectionHeaderHeight/2
         self.heightFooter = self.feedTableView.sectionFooterHeight/2
-        print("FeedViewController - viewDidLoad")
         
         self.loadFeed()
         self.refresh.addTarget(self, action: #selector(self.loadFeed), for: .valueChanged)
@@ -83,7 +79,6 @@ extension FeedVC{
                 print(error.localizedDescription)
             }
         }
-
     }
     
     func loadFeedMore(){
@@ -133,8 +128,6 @@ extension FeedVC{
     }
 }
 
-
-
 //MARK: - Table
 extension FeedVC:UITableViewDataSource{
     
@@ -148,6 +141,8 @@ extension FeedVC:UITableViewDataSource{
         cell.name.text = self.tweets[indexPath.section].user.name
         cell.createAt.text = self.dateFormatter(self.tweets[indexPath.section].createdAt)
         cell.summer.text = self.tweets[indexPath.section].text
+        cell.likeCheck = self.tweets[indexPath.section].favorited
+        cell.retCheck = self.tweets[indexPath.section].retweeted
         if cell.summerPhoto != nil{
             cell.summerPhoto!.image = self.tweets[indexPath.section].mediaPhoto
         }
@@ -161,12 +156,14 @@ extension FeedVC:UITableViewDataSource{
         retText.addAttribute(.font, value: UIFont.systemFont(ofSize: CGFloat(13)), range: NSRange.init(location: 0, length: ret.count))
         cell.favoriteBtn.setAttributedTitle(favorText, for: .normal)
         cell.retweetBtn.setAttributedTitle(retText, for: .normal)
+        
+        cell.rootVC = self
+        cell.index = indexPath.section
         return cell
     }
 }
 
 extension FeedVC:UITableViewDelegate{
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.tweets.count
     }

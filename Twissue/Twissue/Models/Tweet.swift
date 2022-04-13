@@ -18,9 +18,11 @@ struct Tweet:Codable {
     var retweetCount:Int
     var favoriteCount:Int
     var entities:Entities
+    var favorited:Bool
+    var retweeted:Bool
     
     enum CodingKeys:String,CodingKey{
-        case user, text, entities
+        case user, text, entities, favorited, retweeted
         case createdAt = "created_at"
         case retweetCount = "retweet_count"
         case favoriteCount = "favorite_count"
