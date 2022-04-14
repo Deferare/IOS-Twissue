@@ -11,7 +11,7 @@ import Alamofire
 
 
 struct Tweet:Codable {
-
+    var tweetID:String
     var user:User
     var createdAt:String
     var text:String
@@ -21,13 +21,14 @@ struct Tweet:Codable {
     var favorited:Bool
     var retweeted:Bool
     
+    
     enum CodingKeys:String,CodingKey{
         case user, text, entities, favorited, retweeted
         case createdAt = "created_at"
         case retweetCount = "retweet_count"
         case favoriteCount = "favorite_count"
+        case tweetID = "id_str"
     }
-    
     
     var profileImage:UIImage?
     var mediaPhoto:UIImage?

@@ -47,7 +47,7 @@ class FeedVC: UIViewController, VCProtocol{
 //MARK: - Customs
 extension FeedVC{
     @objc func loadFeed() {
-        let para:[String : Any] = ["count":50,
+        let para:[String : Any] = ["count":20,
                                    "exclude_replies":true,
                                    "include_rts":0]
         TwitterAPI.requestGET("https://api.twitter.com/1.1/statuses/home_timeline.json", para) {res in
@@ -137,25 +137,18 @@ extension FeedVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as! FeedTableViewCell
+        cell.tweetID = self.tweets[indexPath.section].tweetID
         cell.profilePhoto.image = self.tweets[indexPath.section].profileImage
         cell.name.text = self.tweets[indexPath.section].user.name
         cell.createAt.text = self.dateFormatter(self.tweets[indexPath.section].createdAt)
         cell.summer.text = self.tweets[indexPath.section].text
-        cell.likeCheck = self.tweets[indexPath.section].favorited
-        cell.retCheck = self.tweets[indexPath.section].retweeted
+        cell.checkLike = self.tweets[indexPath.section].favorited
+        cell.checkRet = self.tweets[indexPath.section].retweeted
+        cell.likeCnt.text = String(self.tweets[indexPath.section].favoriteCount)
+        cell.retCnt.text = String(self.tweets[indexPath.section].retweetCount)
         if cell.summerPhoto != nil{
             cell.summerPhoto!.image = self.tweets[indexPath.section].mediaPhoto
         }
-        
-        // Set up Button.
-        let fav = String(self.tweets[indexPath.section].favoriteCount)
-        let ret = String(self.tweets[indexPath.section].retweetCount)
-        let favorText = NSMutableAttributedString(string: fav)
-        let retText = NSMutableAttributedString(string: ret)
-        favorText.addAttribute(.font, value: UIFont.systemFont(ofSize: CGFloat(13)), range: NSRange.init(location: 0, length: fav.count))
-        retText.addAttribute(.font, value: UIFont.systemFont(ofSize: CGFloat(13)), range: NSRange.init(location: 0, length: ret.count))
-        cell.favoriteBtn.setAttributedTitle(favorText, for: .normal)
-        cell.retweetBtn.setAttributedTitle(retText, for: .normal)
         
         cell.rootVC = self
         cell.index = indexPath.section

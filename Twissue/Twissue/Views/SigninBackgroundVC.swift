@@ -10,7 +10,6 @@ import FirebaseAuth
 
 //MARK: - Circle
 class SigninBackgroundVC: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,13 +49,11 @@ extension SigninBackgroundVC{
                 self.signinCheck()
                 return
             }
-
             TwitterAPI.myClient.client.credential.oauthToken = UserDefaults.standard.value(forKey: "oauthToken") as! String
             TwitterAPI.myClient.client.credential.oauthTokenSecret = UserDefaults.standard.value(forKey: "oauthTokenSecret") as! String
             let tabVC = self.storyboard?.instantiateViewController(withIdentifier: "EntryTab")
             tabVC?.modalPresentationStyle = .fullScreen
             self.present(tabVC!, animated: true, completion: nil)
-    
         }
     }
 }

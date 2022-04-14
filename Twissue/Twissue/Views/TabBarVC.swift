@@ -24,7 +24,6 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
-
 }
 
 //MARK: - Customs
@@ -69,7 +68,6 @@ extension TabBarVC{
                 VC.chartTable.scrollToRow(at: indexPath, at: .top, animated: true)
             }
         }
-        
         self.preSelected = index
     }
 }
@@ -77,8 +75,4 @@ extension TabBarVC{
 
 extension UIViewController{
     @objc func removeAllMy() {}
-    
-
-    
-    
 }

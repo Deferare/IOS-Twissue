@@ -25,7 +25,6 @@ class ChartVC: UIViewController, VCProtocol {
     override var prefersStatusBarHidden: Bool {return true}
 }
 
-
 //MARK: - Customs
 extension ChartVC{
 }

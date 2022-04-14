@@ -15,16 +15,12 @@ class SearchVC: UIViewController, VCProtocol {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var searchTableView:UITableView!
     @IBOutlet var noData:UILabel!
-    
     var heightHeader:CGFloat?
     var heightFooter:CGFloat?
-    
     var images = [UIImage]()
-    
     var preTableSection = 0
     var nextToken = ""
     var para:Dictionary<String, Any>!
-    
     let banLetters:Set<String> = ["@", "#", "/", " ", "%", "^", "&", "*", "(", ")", "[", "]", ";", "<", ">", "~", "`", "'", "\""]
     
     override func viewDidLoad() {
@@ -50,12 +46,10 @@ class SearchVC: UIViewController, VCProtocol {
 
 //MARK: - Customs
 extension SearchVC{
-    
     override func removeAllMy(){}
     @objc func endEditing(){ self.view.endEditing(true)}
         
     func requestImages(){
-        
         let q = "\(self.para!["query"]!)"
         self.para!["query"] = "(\(q)) -is:retweet -is:Quote -is:reply has:images"
         print(self.para!["query"] as Any)
@@ -158,7 +152,6 @@ extension SearchVC:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // Adjust searchBar.
         let sec = indexPath.section
         if sec < self.preTableSection && self.searchBar.alpha == 0{
@@ -166,21 +159,17 @@ extension SearchVC:UITableViewDataSource{
         } else if sec > self.preTableSection && self.searchBar.alpha == 1{
             self.barToggle()
         } //
-        
         self.preTableSection = sec
         if sec == self.images.count-2{
             self.moreLoadImages()
         }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! SearchTableViewCell
         cell.photo.image = self.images[sec]
-        
         return cell
     }
 }
 
 extension SearchVC:UITableViewDelegate{
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.images.count
     }

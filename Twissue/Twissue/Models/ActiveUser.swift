@@ -8,9 +8,10 @@
 import Foundation
 
 
-struct ActiveUser{
+class ActiveUser{
     var displayName:String?
     var photoURL:String?
+    static var userId:String?
 }
 
 extension ActiveUser{

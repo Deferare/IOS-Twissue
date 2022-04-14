@@ -82,45 +82,53 @@
                                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="450" id="1cO-6n-idz"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-WY-awc">
+                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-WY-awc">
                                                             <rect key="frame" x="0.0" y="178.66666666666666" width="330" height="30.666666666666657"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="30.666666666666668"/>
-                                                                    <color key="tintColor" systemColor="labelColor"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" imagePadding="2">
-                                                                        <attributedString key="attributedTitle">
-                                                                            <fragment content="0">
-                                                                                <attributes>
-                                                                                    <font key="NSFont" metaFont="toolTip"/>
-                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                </attributes>
-                                                                            </fragment>
-                                                                        </attributedString>
-                                                                    </buttonConfiguration>
-                                                                    <connections>
-                                                                        <action selector="likeOrUnLikeTweet:" destination="K0L-kx-lHG" eventType="touchUpInside" id="kkH-Gf-FOj"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
-                                                                    <rect key="frame" x="170" y="0.0" width="160" height="30.666666666666668"/>
-                                                                    <color key="tintColor" systemColor="labelColor"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.2.squarepath" catalog="system" imagePadding="2">
-                                                                        <attributedString key="attributedTitle">
-                                                                            <fragment content="0">
-                                                                                <attributes>
-                                                                                    <font key="NSFont" metaFont="toolTip"/>
-                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                                </attributes>
-                                                                            </fragment>
-                                                                        </attributedString>
-                                                                    </buttonConfiguration>
-                                                                    <connections>
-                                                                        <action selector="likeOrUnLikeTweet:" destination="K0L-kx-lHG" eventType="touchUpInside" id="2Sp-wG-sml"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-12" translatesAutoresizingMaskIntoConstraints="NO" id="S1V-Mf-X2F">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="165" height="30.666666666666668"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="30.666666666666668"/>
+                                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                                            <state key="normal" title="Button"/>
+                                                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="" imagePadding="0.0">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                                                            </buttonConfiguration>
+                                                                            <connections>
+                                                                                <action selector="likeOrUndo:" destination="K0L-kx-lHG" eventType="touchUpInside" id="ka3-IQ-4DI"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="clip" baselineAdjustment="none" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-Pa-H6i">
+                                                                            <rect key="frame" x="76.666666666666686" y="8.3333333333333428" width="88.333333333333314" height="14.333333333333336"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-12" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-jO-ub6">
+                                                                    <rect key="frame" x="165" y="0.0" width="165" height="30.666666666666668"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="30.666666666666668"/>
+                                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                                            <state key="normal" title="Button"/>
+                                                                            <buttonConfiguration key="configuration" style="plain" image="arrow.2.squarepath" catalog="system" title="" imagePadding="2">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                                                            </buttonConfiguration>
+                                                                            <connections>
+                                                                                <action selector="retweetOrUndo:" destination="K0L-kx-lHG" eventType="touchUpInside" id="JO4-eA-YI1"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="clip" baselineAdjustment="none" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soH-al-9PA">
+                                                                            <rect key="frame" x="76.666666666666657" y="8.3333333333333428" width="88.333333333333343" height="14.333333333333336"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
@@ -147,10 +155,12 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="createAt" destination="9Qh-cx-aI3" id="eck-Io-Nqj"/>
-                                            <outlet property="favoriteBtn" destination="KJH-59-ejn" id="hLh-e4-nBd"/>
+                                            <outlet property="likeBtn" destination="KJH-59-ejn" id="hLh-e4-nBd"/>
+                                            <outlet property="likeCnt" destination="ww5-Pa-H6i" id="qnH-Dp-bSC"/>
                                             <outlet property="name" destination="fQf-vI-v5c" id="RjB-Eh-zp3"/>
                                             <outlet property="profilePhoto" destination="58e-7y-9Ce" id="3gb-Ww-4WM"/>
-                                            <outlet property="retweetBtn" destination="Y8B-B0-AVl" id="I8g-nf-hlX"/>
+                                            <outlet property="retBtn" destination="Y8B-B0-AVl" id="I8g-nf-hlX"/>
+                                            <outlet property="retCnt" destination="soH-al-9PA" id="Qoa-Ct-HFh"/>
                                             <outlet property="summer" destination="Fpr-TG-fbf" id="cyo-wk-wK6"/>
                                             <outlet property="summerPhoto" destination="IiZ-DM-UEJ" id="Eze-U4-sH3"/>
                                         </connections>

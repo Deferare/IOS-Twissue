@@ -11,11 +11,10 @@ import FirebaseAuth
 
 //MARK: - Circle
 class SigninVC: UIViewController {
+    @IBOutlet var loginBtn:UIButton!
     var signBackCV:SigninBackgroundVC!
     let provider = OAuthProvider(providerID: "twitter.com")
-    
-    @IBOutlet var loginBtn:UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +32,6 @@ class SigninVC: UIViewController {
     }
 }
 
-
 //MARK: - Custom
 extension SigninVC{
     @IBAction func loginBtnAction(_ sender:UIButton){
@@ -42,7 +40,9 @@ extension SigninVC{
             if credential != nil {
                 Auth.auth().signIn(with: credential!) { authResult, error in
                     if error != nil {print(error as Any)}
+                    let userId = authResult?.additionalUserInfo?.profile!["id"] as! NSNumber
                     if let credent = authResult?.credential as? OAuthCredential{
+                        UserDefaults.standard.setValue(userId, forKey: "userId")
                         UserDefaults.standard.setValue(credent.accessToken!, forKey: "oauthToken")
                         UserDefaults.standard.setValue(credent.secret!, forKey: "oauthTokenSecret")
                         self.dismiss(animated: true, completion: nil)
