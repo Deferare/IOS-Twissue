@@ -8,7 +8,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,14 +23,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" id="K0L-kx-lHG" customClass="FeedTableViewCell" customModule="Twissue" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="350" height="229.33332824707031"/>
+                                        <rect key="frame" x="20" y="49" width="350" height="248.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K0L-kx-lHG" id="cai-Pv-Zqd">
-                                            <rect key="frame" x="0.0" y="0.0" width="350" height="229.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="248.66667175292969"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="44u-BO-SQ5">
-                                                    <rect key="frame" x="10" y="10" width="330" height="209.33333333333334"/>
+                                                    <rect key="frame" x="10" y="10" width="330" height="228.66666666666666"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zDx-k6-ZjG">
                                                             <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="50.333333333333336"/>
@@ -83,16 +82,24 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-WY-awc">
-                                                            <rect key="frame" x="0.0" y="178.66666666666666" width="330" height="30.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="178.66666666666666" width="330" height="50"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-12" translatesAutoresizingMaskIntoConstraints="NO" id="S1V-Mf-X2F">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="165" height="30.666666666666668"/>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S1V-Mf-X2F">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="165" height="50"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="30.666666666666668"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-i7-KgZ">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbC-Ag-7qR">
+                                                                            <rect key="frame" x="27.666666666666664" y="0.0" width="27.333333333333336" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJH-59-ejn">
+                                                                            <rect key="frame" x="54.999999999999993" y="9.6666666666666874" width="27.666666666666664" height="30.666666666666671"/>
                                                                             <color key="tintColor" systemColor="labelColor"/>
                                                                             <state key="normal" title="Button"/>
-                                                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="" imagePadding="0.0">
+                                                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" imagePadding="0.0">
                                                                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                                                             </buttonConfiguration>
                                                                             <connections>
@@ -100,18 +107,34 @@
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="clip" baselineAdjustment="none" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-Pa-H6i">
-                                                                            <rect key="frame" x="76.666666666666686" y="8.3333333333333428" width="88.333333333333314" height="14.333333333333336"/>
+                                                                            <rect key="frame" x="82.666666666666671" y="18" width="27.333333333333329" height="14.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWQ-4g-z3A">
+                                                                            <rect key="frame" x="110" y="0.0" width="27.666666666666657" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-hj-Brx">
+                                                                            <rect key="frame" x="137.66666666666666" y="0.0" width="27.333333333333343" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-12" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-jO-ub6">
-                                                                    <rect key="frame" x="165" y="0.0" width="165" height="30.666666666666668"/>
+                                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DOA-jO-ub6">
+                                                                    <rect key="frame" x="165" y="0.0" width="165" height="50"/>
                                                                     <subviews>
-                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="30.666666666666668"/>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4L-7y-Fdw">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="27.666666666666668" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bm2-Ik-FOm">
+                                                                            <rect key="frame" x="27.666666666666657" y="0.0" width="27.333333333333329" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8B-B0-AVl">
+                                                                            <rect key="frame" x="54.999999999999993" y="9.6666666666666874" width="27.666666666666664" height="30.666666666666671"/>
                                                                             <color key="tintColor" systemColor="labelColor"/>
                                                                             <state key="normal" title="Button"/>
                                                                             <buttonConfiguration key="configuration" style="plain" image="arrow.2.squarepath" catalog="system" title="" imagePadding="2">
@@ -122,11 +145,19 @@
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="clip" baselineAdjustment="none" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soH-al-9PA">
-                                                                            <rect key="frame" x="76.666666666666657" y="8.3333333333333428" width="88.333333333333343" height="14.333333333333336"/>
+                                                                            <rect key="frame" x="82.666666666666686" y="18" width="27.333333333333329" height="14.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFM-lc-NJv">
+                                                                            <rect key="frame" x="110" y="0.0" width="27.666666666666657" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOv-qO-53b">
+                                                                            <rect key="frame" x="137.66666666666669" y="0.0" width="27.333333333333343" height="50"/>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </view>
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
@@ -318,71 +349,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-cA-2WZ">
+                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FJc-cA-2WZ">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChartCell" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49" width="350" height="350.33334350585938"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SdJ-Un-Q2m" id="fXZ-U0-inq">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChartCell" translatesAutoresizingMaskIntoConstraints="NO" id="SdJ-Un-Q2m" customClass="ChartTableCell" customModule="Twissue" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49" width="350" height="350"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SdJ-Un-Q2m" translatesAutoresizingMaskIntoConstraints="NO" id="fXZ-U0-inq">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="350.33334350585938"/>
-                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lH-E0-tto">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350.33333333333331"/>
-                                                    <subviews>
-                                                        <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" layoutMarginsFollowReadableWidth="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="gKz-Jf-QPx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="layoutMargins" id="tds-07-acd">
-                                                                <size key="itemSize" width="332" height="325"/>
-                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            </collectionViewFlowLayout>
-                                                            <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PieCollecCell" id="UYS-xi-DAO" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
-                                                                    <rect key="frame" x="8" y="12" width="332" height="325"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ze8-Vu-3b4">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <subviews>
-                                                                            <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-C8-gEG" customClass="PieChartView" customModule="Charts">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="332" height="325"/>
-                                                                                <color key="backgroundColor" name="AccentColor"/>
-                                                                            </view>
-                                                                        </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="leading" secondItem="ze8-Vu-3b4" secondAttribute="leading" id="1vr-ai-3uP"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="JqV-C8-gEG" secondAttribute="bottom" id="CdO-9c-ZJD"/>
-                                                                            <constraint firstItem="JqV-C8-gEG" firstAttribute="top" secondItem="ze8-Vu-3b4" secondAttribute="top" id="Nvw-Gt-Wgi"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="JqV-C8-gEG" secondAttribute="trailing" id="Srw-z0-z6H"/>
-                                                                        </constraints>
-                                                                    </collectionViewCellContentView>
-                                                                    <connections>
-                                                                        <outlet property="pieChartView" destination="JqV-C8-gEG" id="Dhx-zJ-erI"/>
-                                                                    </connections>
-                                                                </collectionViewCell>
-                                                            </cells>
-                                                        </collectionView>
-                                                    </subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QEK-h4-amx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="GBe-ZS-3zQ"/>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="Lbu-Pr-ybv"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="bS2-ad-gJY"/>
                                                     </constraints>
-                                                </stackView>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="W8Q-lT-yFV">
+                                                        <size key="itemSize" width="316" height="310"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="PieCollecCell" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-HZ-Vhg" customClass="PieChartCollectCell" customModule="Twissue" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="20" width="316" height="310"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="316" height="310"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view userInteractionEnabled="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="bi2-vH-6fC" customClass="PieChartView" customModule="Charts">
+                                                                        <rect key="frame" x="0.0" y="1" width="316" height="310"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <color key="backgroundColor" name="AccentColor"/>
+                                                                    </view>
+                                                                </subviews>
+                                                            </view>
+                                                            <size key="customSize" width="316" height="310"/>
+                                                            <connections>
+                                                                <outlet property="pieChartView" destination="bi2-vH-6fC" id="T4u-tF-cE7"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5lH-E0-tto" firstAttribute="leading" secondItem="fXZ-U0-inq" secondAttribute="leading" id="Xbr-9L-pv6"/>
-                                                <constraint firstAttribute="trailing" secondItem="5lH-E0-tto" secondAttribute="trailing" id="eO0-7Z-WuQ"/>
-                                                <constraint firstItem="5lH-E0-tto" firstAttribute="top" secondItem="fXZ-U0-inq" secondAttribute="top" id="gPb-jx-Xba"/>
-                                                <constraint firstAttribute="bottom" secondItem="5lH-E0-tto" secondAttribute="bottom" id="wxW-yW-wEJ"/>
+                                                <constraint firstItem="QEK-h4-amx" firstAttribute="top" secondItem="fXZ-U0-inq" secondAttribute="top" id="57x-Hf-hZb"/>
+                                                <constraint firstAttribute="trailing" secondItem="QEK-h4-amx" secondAttribute="trailing" id="7P5-wr-cYn"/>
+                                                <constraint firstItem="QEK-h4-amx" firstAttribute="leading" secondItem="fXZ-U0-inq" secondAttribute="leading" id="GiX-Xf-Ehq"/>
+                                                <constraint firstAttribute="bottom" secondItem="QEK-h4-amx" secondAttribute="bottom" id="UMR-Ml-Urg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionView" destination="gKz-Jf-QPx" id="k3X-kz-Maf"/>
+                                            <outlet property="collectionView" destination="QEK-h4-amx" id="h1U-qg-bka"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -16,6 +16,7 @@ class PieChartCollectCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         self.drawChart()
         FireData.childViews.append(self)
     }

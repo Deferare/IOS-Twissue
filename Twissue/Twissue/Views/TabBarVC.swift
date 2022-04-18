@@ -44,7 +44,7 @@ extension TabBarVC{
 //MARK: - Tab
 extension TabBarVC{
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        self.impactGenerator.impactOccurred()
+        self.impactGenerator.impactOccurred(intensity: 0.75)
         let index = tabBarController.selectedIndex
         print("Tab - ", index)
         

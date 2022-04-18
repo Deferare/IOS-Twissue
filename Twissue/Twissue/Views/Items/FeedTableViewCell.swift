@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 //MARK: - Circle
 class FeedTableViewCell: UITableViewCell {
     @IBOutlet var profilePhoto:UIImageView!
@@ -34,6 +33,7 @@ class FeedTableViewCell: UITableViewCell {
         self.profilePhoto.layer.cornerRadius = self.profilePhoto.frame.height/2
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.touchPhoto))
         self.summerPhoto?.addGestureRecognizer(tap)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,6 +62,7 @@ extension FeedTableViewCell {
             if check{
                 favImage = UIImage(systemName: "heart.fill")!
                 self.likeBtn.tintColor = .systemPink
+                
             }else{
                 favImage = UIImage(systemName: "heart")!
                 self.likeBtn.tintColor = .label
@@ -85,6 +86,7 @@ extension FeedTableViewCell {
     }
     
     @IBAction private func likeOrUndo(_ sender:UIButton){
+        sender.animateScaleUpDown()
         self.updateLikeBtn(!self.checkLike)
         if !self.checkLike{
             self.rootVC.tweets[self.index].favoriteCount += 1
@@ -93,7 +95,6 @@ extension FeedTableViewCell {
         }
         guard let userId = UserDefaults.standard.value(forKey: "userId") as? NSNumber else {return}
         let endPoint = "https://api.twitter.com/2/users/\(userId)/likes"
-        print(endPoint)
         TwitterAPI.requestLikeOrRetweet(self.checkLike, endPoint, tweetId: self.tweetID) {res, newLikeCheck in
             print(res)
             self.checkLike = newLikeCheck
@@ -103,6 +104,7 @@ extension FeedTableViewCell {
     }
     
     @IBAction private func retweetOrUndo(_ sender:UIButton){
+        sender.animateScaleUpDown()
         self.updateRetBtn(!self.checkRet)
         if !self.checkRet{
             self.rootVC.tweets[self.index].retweetCount += 1

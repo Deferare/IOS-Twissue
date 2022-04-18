@@ -40,7 +40,6 @@ class SearchVC: UIViewController, VCProtocol {
                      "expansions":"attachments.media_keys",
                      "media.fields":"media_key,type,url"]
     }
-    
     override var prefersStatusBarHidden: Bool{return true}
 }
 
@@ -48,7 +47,6 @@ class SearchVC: UIViewController, VCProtocol {
 extension SearchVC{
     override func removeAllMy(){}
     @objc func endEditing(){ self.view.endEditing(true)}
-        
     func requestImages(){
         let q = "\(self.para!["query"]!)"
         self.para!["query"] = "(\(q)) -is:retweet -is:Quote -is:reply has:images"

@@ -4,7 +4,6 @@
 //
 //  Created by Deforeturn on 2/13/22.
 //
-
 import UIKit
 import OAuthSwift
 import Alamofire
@@ -35,11 +34,6 @@ class FeedVC: UIViewController, VCProtocol{
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     override var prefersStatusBarHidden: Bool{return true}
 }
 
@@ -58,17 +52,17 @@ extension FeedVC{
                 for i in 0..<self.tweets.count{
                     AF.request(self.tweets[i].user.profileImageUrlHttps).response { data in
                         self.tweets[i].profileImage = UIImage(data: data.data!, scale:1)
-                    }
-                    if self.tweets[i].entities.media != nil{
-                        AF.request(self.tweets[i].entities.media![0].mediaUrlHttps).response { data in
-                            self.tweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                        if self.tweets[i].entities.media != nil{
+                            AF.request(self.tweets[i].entities.media![0].mediaUrlHttps).response { data in
+                                self.tweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                                DispatchQueue.main.async {
+                                    self.feedTableView?.reloadData()
+                                }
+                            }
+                        }else{
                             DispatchQueue.main.async {
                                 self.feedTableView?.reloadData()
                             }
-                        }
-                    }else{
-                        DispatchQueue.main.async {
-                            self.feedTableView?.reloadData()
                         }
                     }
                 }
@@ -93,23 +87,22 @@ extension FeedVC{
                 for i in 0..<newTweets.count{
                     AF.request(newTweets[i].user.profileImageUrlHttps).response { data in
                         newTweets[i].profileImage = UIImage(data: data.data!, scale:1)
-                    }
-                    if newTweets[i].entities.media != nil{
-                        AF.request(newTweets[i].entities.media![0].mediaUrlHttps).response { data in
-                            newTweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
-                            self.tweets.append(newTweets[i])
+                        if newTweets[i].entities.media != nil{
+                            AF.request(newTweets[i].entities.media![0].mediaUrlHttps).response { data in
+                                DispatchQueue.main.async {
+                                    newTweets[i].mediaPhoto = UIImage(data: data.data!, scale:1)
+                                    self.tweets.append(newTweets[i])
+                                    self.feedTableView?.reloadData()
+                                }
+                            }
+                        }else{
                             DispatchQueue.main.async {
+                                self.tweets.append(newTweets[i])
                                 self.feedTableView?.reloadData()
                             }
                         }
-                    }else{
-                        self.tweets.append(newTweets[i])
-                        DispatchQueue.main.async {
-                            self.feedTableView?.reloadData()
-                        }
                     }
                 }
-                
             } catch(let error){
                 print("loadFeed fail.")
                 print(error.localizedDescription)
@@ -130,12 +123,14 @@ extension FeedVC{
 
 //MARK: - Table
 extension FeedVC:UITableViewDataSource{
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section+3 > self.tweets.count{
+            self.loadFeedMore()
+        }
         let cell:FeedTableViewCell = tableView.dequeueReusableCell(withIdentifier: "feedCell") as! FeedTableViewCell
         cell.tweetID = self.tweets[indexPath.section].tweetID
         cell.profilePhoto.image = self.tweets[indexPath.section].profileImage
@@ -149,7 +144,6 @@ extension FeedVC:UITableViewDataSource{
         if cell.summerPhoto != nil{
             cell.summerPhoto!.image = self.tweets[indexPath.section].mediaPhoto
         }
-        
         cell.rootVC = self
         cell.index = indexPath.section
         return cell
@@ -168,13 +162,4 @@ extension FeedVC:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return self.heightFooter!
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section+3 > self.tweets.count{
-            self.loadFeedMore()
-        }
-    }
 }
-
-
-
